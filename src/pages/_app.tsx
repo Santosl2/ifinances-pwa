@@ -1,8 +1,14 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-unresolved */
-import type { AppProps } from "next/app";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import "../../styles/globals.scss";
+
+interface AppProps {
+  Component: any;
+  pageProps: any;
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
