@@ -10,6 +10,7 @@ describe("Header Test", () => {
   it("should render Header", () => {
     render(<Header />);
 
-    expect(screen.getByText("Hello World")).toBeInTheDocument();
+    expect(screen.getByText("Nova transação")).toBeInTheDocument();
+    expect(screen.getByAltText("iFinances Logo")).toBeInTheDocument();
   });
 });
