@@ -1,9 +1,12 @@
-import { HeaderWrapper } from "./Header.styles";
+import { HeaderContent, HeaderWrapper } from "./Header.styles";
 
 export function Header(): JSX.Element {
   return (
     <HeaderWrapper>
-      <h1>Hello World</h1>
+      <HeaderContent>
+        <img src="/iFinances.svg" alt="iFinances Logo" />
+        <button type="button">Nova transação</button>
+      </HeaderContent>
     </HeaderWrapper>
   );
 }

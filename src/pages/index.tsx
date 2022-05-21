@@ -1,11 +1,13 @@
-import { Header } from "@/components/Header";
+import { Summary } from "@/components/Summary";
 import { SEO } from "@/SEO";
 
 export default function Home() {
   return (
     <>
       <SEO title="Teste" />
-      <Header />
+      <main>
+        <Summary />
+      </main>
     </>
   );
 }

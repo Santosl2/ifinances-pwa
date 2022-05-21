@@ -3,6 +3,8 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { GlobalStyle } from "@/../styles/globalStyle";
+import { Header } from "@/components";
 import "../../styles/globals.scss";
 
 interface AppProps {
@@ -11,7 +13,14 @@ interface AppProps {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Header />
+
+      <Component {...pageProps} />
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default MyApp;
