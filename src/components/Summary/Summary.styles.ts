@@ -5,6 +5,7 @@ export const SummaryWrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-top: -9rem;
+  margin-bottom: 5rem;
 
   div:last-child {
     background-color: var(--green);
