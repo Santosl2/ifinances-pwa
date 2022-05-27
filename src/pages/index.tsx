@@ -1,8 +1,16 @@
+import { useEffect } from "react";
+
 import { Summary } from "@/components/Summary";
 import { Table } from "@/components/Table";
 import { SEO } from "@/SEO";
+import { api } from "@/services/api";
 
 export default function Home() {
+  useEffect(() => {
+    api.get("/users").then((response) => {
+      console.log(response);
+    });
+  }, []);
   return (
     <>
       <SEO title="Teste" />
