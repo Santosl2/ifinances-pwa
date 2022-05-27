@@ -3,9 +3,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { GlobalStyle } from "@/../styles/globalStyle";
-import { Header } from "@/components";
-import "../../styles/globals.scss";
+import { GlobalStyle } from "@styles/globalStyle";
 
 interface AppProps {
   Component: any;
@@ -15,8 +13,6 @@ interface AppProps {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Header />
-
       <Component {...pageProps} />
       <GlobalStyle />
     </>
