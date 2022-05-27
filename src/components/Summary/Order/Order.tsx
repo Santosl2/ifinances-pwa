@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable unused-imports/no-unused-vars */
 import { useEffect, useRef } from "react";
 
@@ -8,10 +9,10 @@ export function Order({ amount, icon, title }: OrderProps): JSX.Element {
   const moneyRef = useRef<HTMLSpanElement>(null);
 
   function animateNumber(speed = 100) {
-    let timeout: ReturnType<typeof setTimeout>;
+    let timeout!: NodeJS.Timeout;
 
     const moneyDiv = moneyRef.current!;
-    const actualValue = Number(moneyDiv.innerText.replace("R$ ", ""));
+    const actualValue = Number(moneyDiv.innerText?.replace("R$ ", ""));
     const endValue = Number(moneyRef.current!.dataset.amount);
     const time = endValue / speed;
 
@@ -21,7 +22,10 @@ export function Order({ amount, icon, title }: OrderProps): JSX.Element {
       return;
     }
 
-    moneyDiv.innerText = endValue.toFixed(2);
+    moneyDiv.innerText = endValue
+      .toFixed(2)
+      .replace(/\d(?=(\d{3})+\.)/g, "$&,");
+
     if (timeout !== undefined) clearTimeout(timeout);
   }
 
