@@ -1,31 +1,15 @@
-import { useEffect } from "react";
+import { Button, Input } from "@/components/Form";
+import { LoginContent, LoginWrapper } from "@styles/Login.styles";
 
-import { Summary } from "@/components/Summary";
-import { Table } from "@/components/Table";
-import { SEO } from "@/SEO";
-import { api } from "@/services/api";
-
-export default function Home() {
-  useEffect(() => {
-    api.get("/users").then((response) => {
-      console.log(response);
-    });
-  }, []);
+export default function Login() {
   return (
-    <>
-      <SEO title="Teste" />
-      <main>
-        <Summary />
-        <Table
-          headers={["Título", "Preço", "Categoria", "Data"]}
-          values={[
-            "Desenvolvimento de site",
-            "R$ 12,000.00",
-            "Venda",
-            "13/04/2021",
-          ]}
-        />
-      </main>
-    </>
+    <LoginWrapper>
+      <LoginContent>
+        <Input name="email" type="email" label="E-mail" />
+        <Input name="password" type="password" label="Senha" />
+
+        <Button type="submit">Send</Button>
+      </LoginContent>
+    </LoginWrapper>
   );
 }
