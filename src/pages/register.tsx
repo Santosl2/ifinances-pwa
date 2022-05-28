@@ -15,7 +15,7 @@ const LoginVariants = {
   },
 };
 
-export default function Login() {
+export default function Register() {
   const router = useRouter();
 
   return (
@@ -27,16 +27,27 @@ export default function Login() {
         variants={LoginVariants}
         transition={{ duration: 0.7 }}
       >
-        <h4>💸 iFinances</h4>
+        <h4>💸 Registro</h4>
         <LoginContent>
-          <Input name="email" type="email" label="E-mail" />
-          <Input name="password" type="password" label="Senha" />
+          <Input name="name" type="text" label="Nome" required />
+
+          <Input name="email" type="email" label="E-mail" required />
+
+          <Input name="password" type="password" label="Senha" required />
+
+          <Input
+            name="repeatPassword"
+            type="password"
+            label="Repetir senha"
+            required
+          />
+
           <Button type="submit" bgColor="#36314f">
-            Entrar
+            Registrar
           </Button>
 
-          <Button type="button" onClick={() => router.push("/register")}>
-            Registre-se
+          <Button type="button" onClick={() => router.push("/")}>
+            Voltar
           </Button>
         </LoginContent>
       </LoginWrapper>

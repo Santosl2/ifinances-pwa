@@ -22,7 +22,7 @@ export const LoginContent = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1.7rem;
   border-radius: 0.1rem;
   min-height: 370px;
