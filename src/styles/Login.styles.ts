@@ -6,6 +6,12 @@ export const LoginWrapper = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  h4 {
+    color: white;
+  }
 `;
 
 export const LoginContent = styled.form`
@@ -16,8 +22,8 @@ export const LoginContent = styled.form`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  padding: 0 1.7rem;
-  border-radius: 0.5rem;
-  min-height: 300px;
+  padding: 1.7rem;
+  border-radius: 0.1rem;
+  min-height: 370px;
   color: white;
 `;
