@@ -2,11 +2,14 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     :root {
-        --background: #f0f2f5;
+        --background: #181B23;
         --red: #e52e4d;
 
         --purple: #5429CC;
         --purple-2: #6933FF;
+
+        --loading-color:#2c146b;
+        --loading-border-color: white;
 
         --text-title: #363f5f;
         --text-body: #969cb3;
@@ -14,6 +17,11 @@ const GlobalStyle = createGlobalStyle`
         --green: #33CC95;
 
         --shape: #ffffff;
+
+        --gray-900: #181B23;
+        --gray-800: #1F2029;
+        --gray-700: #353646;
+        --gray-600: #4B4D63;
     }
 
     * {
@@ -46,13 +54,14 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 600;
     }
 
-    button {
-        cursor: pointer;
-    }
 
     [disabled] {
         opacity: 0.6;
         cursor: not-allowed;
+    }
+
+    h4 {
+        font-size: 2rem;
     }
     
     .react-modal-overlay {
