@@ -3,9 +3,9 @@ import { LoadingIndicator } from "../LoadingIndicator";
 import { ButtonStyled } from "./Button.styles";
 import { ButtonProps } from "./Button.types";
 
-export function Button({ isLoading, children, ...rest }: ButtonProps) {
+export function Button({ isLoading, children, bgColor, ...rest }: ButtonProps) {
   return (
-    <ButtonStyled {...rest}>
+    <ButtonStyled bgColor={bgColor} {...rest}>
       {isLoading ? <LoadingIndicator /> : children}
     </ButtonStyled>
   );
