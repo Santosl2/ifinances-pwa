@@ -7,6 +7,7 @@ export const InputWrapper = styled.div`
 
   label {
     cursor: pointer;
+    font-family: "Roboto", sans-serif;
   }
 `;
 export const InputStyled = styled.input`
