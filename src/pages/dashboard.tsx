@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import { Header } from "@/components";
 import { Summary } from "@/components/Summary";
 import { Table } from "@/components/Table";
 import { SEO } from "@/SEO";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <SEO title="Teste" />
+      <Header />
       <main>
         <Summary />
         <Table
