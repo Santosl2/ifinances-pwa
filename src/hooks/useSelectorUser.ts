@@ -9,7 +9,7 @@ type User = {
   };
 };
 
-export function useSelectorUser(): string {
-  const userData = useSelector<User>((state) => state.user.name);
-  return userData as string;
+export function useSelectorUser(): User {
+  const userData = useSelector<User>((state) => state.user) as User;
+  return userData;
 }
