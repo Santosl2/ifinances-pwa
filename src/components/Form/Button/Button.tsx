@@ -5,7 +5,7 @@ import { ButtonProps } from "./Button.types";
 
 export function Button({ isLoading, children, bgColor, ...rest }: ButtonProps) {
   return (
-    <ButtonStyled bgColor={bgColor} {...rest} disabled={isLoading}>
+    <ButtonStyled bgColor={bgColor} {...rest}>
       {isLoading ? <LoadingIndicator /> : children}
     </ButtonStyled>
   );
