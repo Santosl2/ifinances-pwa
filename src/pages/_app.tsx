@@ -3,6 +3,9 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { QueryClientProvider } from "react-query";
+
+import { queryClient } from "@/services/queryClient";
 import { GlobalStyle } from "@styles/globalStyle";
 
 interface AppProps {
@@ -12,10 +15,10 @@ interface AppProps {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
       <GlobalStyle />
-    </>
+    </QueryClientProvider>
   );
 }
 
