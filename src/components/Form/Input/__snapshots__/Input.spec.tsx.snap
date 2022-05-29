@@ -12,6 +12,11 @@ exports[`Input Test should match Snapshot 1`] = `
   gap: 1rem;
 }
 
+.c0 span {
+  font-size: 0.8rem;
+  color: var(--red);
+}
+
 .c0 label {
   cursor: pointer;
   font-family: "Roboto",sans-serif;
@@ -29,6 +34,7 @@ exports[`Input Test should match Snapshot 1`] = `
 
 .c1:focus {
   outline: none;
+  border-bottom-width: 2px;
   border-bottom-color: var(--purple);
 }
 
