@@ -4,6 +4,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { queryClient } from "@/services/queryClient";
 import { GlobalStyle } from "@styles/globalStyle";
@@ -18,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
       <GlobalStyle />
+      <ToastContainer />
     </QueryClientProvider>
   );
 }
