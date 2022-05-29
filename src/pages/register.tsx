@@ -41,7 +41,7 @@ export default function Register() {
   const router = useRouter();
 
   const createUser = useMutation(async (user: SignUpFormData) => {
-    const response = await api.post("/users", {
+    const response = await api.post("/users/create", {
       user,
     });
 
