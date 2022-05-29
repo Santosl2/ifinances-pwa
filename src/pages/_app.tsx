@@ -7,19 +7,11 @@ import { QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { parseCookies } from "nookies";
-
-import {
-  LOGIN_COOKIE_ACCESS_TOKEN,
-  LOGIN_COOKIE_NAME,
-  LOGIN_COOKIE_REFRESH_TOKEN,
-} from "@/constants";
 import { queryClient } from "@/services/queryClient";
 import store from "@/store";
 import { GlobalStyle } from "@styles/globalStyle";
 
-import { Provider, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { Provider } from "react-redux";
 
 interface AppProps {
   Component: any;
@@ -27,26 +19,26 @@ interface AppProps {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const {
-      [LOGIN_COOKIE_NAME]: cookieUser,
-      [LOGIN_COOKIE_ACCESS_TOKEN]: accessToken,
-      [LOGIN_COOKIE_REFRESH_TOKEN]: refreshToken,
-    } = parseCookies();
+  // useEffect(() => {
+  //   const {
+  //     [LOGIN_COOKIE_NAME]: cookieUser,
+  //     [LOGIN_COOKIE_ACCESS_TOKEN]: accessToken,
+  //     [LOGIN_COOKIE_REFRESH_TOKEN]: refreshToken,
+  //   } = parseCookies();
 
-    if (cookieUser && accessToken && refreshToken) {
-      const parse = JSON.parse(cookieUser);
-      const userData = {
-        ...parse,
-        refreshToken,
-        accessToken,
-      };
-      console.log(userData);
-      // dispatch(changeUser(userData));
-    }
-  }, []);
+  //   if (cookieUser && accessToken && refreshToken) {
+  //     const parse = JSON.parse(cookieUser);
+  //     const userData = {
+  //       ...parse,
+  //       refreshToken,
+  //       accessToken,
+  //     };
+  //     console.log(userData);
+  //     // dispatch(changeUser(userData));
+  //   }
+  // }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
