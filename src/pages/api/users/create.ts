@@ -1,19 +1,19 @@
+/* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable unused-imports/no-unused-vars */
-import { hash } from "bcryptjs";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { SignUpFormData } from "@/interfaces/Forms";
-import { database } from "@/services/firebase";
+import { auth, database } from "@/services/firebase";
+import { hashPassword } from "@/utils/Hash";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // to do create user
   if (req.method === "POST") {
     const { name, email, password } = req.body?.user as SignUpFormData;
 
-    const auth = getAuth();
     const dbInstance = collection(database, "users");
 
     const q = query(dbInstance, where("email", "==", email));
@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         password
       );
 
-      const hashedPassword = await hash(password, 8);
+      const hashedPassword = await hashPassword(password);
 
       addDoc(dbInstance, {
         id: createUser.user.uid,
