@@ -16,6 +16,11 @@ exports[`Button Test should match Snapshot 1`] = `
   background: #c00;
 }
 
+.c0:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 <button
   class="c0"
 >

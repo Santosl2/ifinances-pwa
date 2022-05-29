@@ -1,29 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input Test must have a border bottom when focusing  1`] = `
-.c0 {
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid var(--text-body);
-  -webkit-transition: border 0.2s;
-  transition: border 0.2s;
-  color: white;
-}
-
-.c0:focus {
-  outline: none;
-  border-bottom-color: var(--purple);
-}
-
-<input
-  class="c0"
-  id="test"
-  name="test"
-  placeholder="Test"
-/>
-`;
-
 exports[`Input Test should match Snapshot 1`] = `
 .c0 {
   display: -webkit-box;

@@ -10,11 +10,11 @@ const spinner = keyframes`
 `;
 
 export const LoadingIndicator = styled.div`
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   background: transparent;
   padding: 5px;
-  border: 3px solid var(--loading-color);
+  border: 2px solid transparent;
   border-right-color: var(--loading-border-color);
   margin: 0 auto;
   border-radius: 1rem;
