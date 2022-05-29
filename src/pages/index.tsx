@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 import { Button, Input } from "@/components/Form";
 import { SEO } from "@/SEO";
 import { LoginContent, LoginWrapper } from "@styles/Login.styles";
@@ -14,6 +16,8 @@ const LoginVariants = {
 };
 
 export default function Login() {
+  const router = useRouter();
+
   return (
     <>
       <SEO title="Controle suas finanças de maneira fácil" />
@@ -31,7 +35,9 @@ export default function Login() {
             Entrar
           </Button>
 
-          <Button type="button">Registre-se</Button>
+          <Button type="button" onClick={() => router.push("/register")}>
+            Registre-se
+          </Button>
         </LoginContent>
       </LoginWrapper>
     </>

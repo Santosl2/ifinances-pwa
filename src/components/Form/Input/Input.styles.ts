@@ -1,9 +1,31 @@
 import styled from "styled-components";
 
-export const InputWrapper = styled.div`
+import { InputProps } from "./Input.types";
+
+export const InputWrapper = styled.div<Pick<InputProps, "error">>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  span {
+    font-size: 0.8rem;
+    color: var(--red);
+  }
+
+  ${(props) =>
+    !!props.error &&
+    `
+    label {
+       color:  var(--red);
+    }
+  input {
+    border-bottom-color: var(--red);
+    &:focus {
+    border-bottom-color: var(--red);
+
+    }
+  }
+  `}
 
   label {
     cursor: pointer;
@@ -20,6 +42,7 @@ export const InputStyled = styled.input`
 
   &:focus {
     outline: none;
+    border-bottom-width: 2px;
     border-bottom-color: var(--purple);
   }
 `;

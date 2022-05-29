@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Test should match Snapshot 1`] = `
+.c0 {
+  cursor: pointer;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 0.5rem;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+}
+
+.c0:hover {
+  background: #c00;
+}
+
+.c0:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+<button
+  class="c0"
+>
+  Teste
+</button>
+`;

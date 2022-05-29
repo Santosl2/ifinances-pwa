@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Test should render Loading 1`] = `
+.c0 {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  padding: 5px;
+  border: 2px solid transparent;
+  border-right-color: var(--loading-border-color);
+  margin: 0 auto;
+  border-radius: 1rem;
+  -webkit-animation: bmMtkP 1.5s infinite;
+  animation: bmMtkP 1.5s infinite;
+}
+
+<div
+  class="c0"
+/>
+`;
