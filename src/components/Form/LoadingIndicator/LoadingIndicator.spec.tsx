@@ -3,8 +3,9 @@
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
+import "jest-styled-components";
 import { LoadingIndicator } from "./LoadingIndicator";
 
 describe("Loading Test", () => {
@@ -15,5 +16,6 @@ describe("Loading Test", () => {
       borderRadius: "1rem",
       background: "transparent",
     });
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -13,9 +13,5 @@ describe("Order Test", () => {
 
     expect(screen.getByText("Teste")).toBeInTheDocument();
     expect(screen.getByAltText("Imagem Order")).toBeInTheDocument();
-
-    // await waitFor(() => {
-    //   expect(screen.getByText(/1,000.00/i)).toBeInTheDocument();
-    // });
   });
 });

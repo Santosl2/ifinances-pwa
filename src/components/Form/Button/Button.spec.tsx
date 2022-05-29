@@ -1,8 +1,10 @@
+/* eslint-disable testing-library/no-node-access */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
 import { render, screen } from "@testing-library/react";
+import "jest-styled-components";
 
 import { Button } from ".";
 
@@ -25,5 +27,12 @@ describe("Button Test", () => {
     expect(screen.getByText("Teste")).toHaveStyle({
       background: "red",
     });
+  });
+
+  it("should match Snapshot", () => {
+    const { container } = render(<Button bgColor="red">Teste</Button>);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(container.firstChild).toHaveStyleRule("background", "red");
   });
 });

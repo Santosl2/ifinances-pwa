@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Test must have a border bottom when focusing  1`] = `
+.c0 {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--text-body);
+  -webkit-transition: border 0.2s;
+  transition: border 0.2s;
+  color: white;
+}
+
+.c0:focus {
+  outline: none;
+  border-bottom-color: var(--purple);
+}
+
+<input
+  class="c0"
+  id="test"
+  name="test"
+  placeholder="Test"
+/>
+`;
+
+exports[`Input Test should match Snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.c0 label {
+  cursor: pointer;
+  font-family: "Roboto",sans-serif;
+}
+
+.c1 {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--text-body);
+  -webkit-transition: border 0.2s;
+  transition: border 0.2s;
+  color: white;
+}
+
+.c1:focus {
+  outline: none;
+  border-bottom-color: var(--purple);
+}
+
+<div
+  class="c0"
+>
+  <input
+    class="c1"
+    id="test"
+    name="test"
+  />
+</div>
+`;
