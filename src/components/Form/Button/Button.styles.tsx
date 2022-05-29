@@ -16,4 +16,9 @@ export const ButtonStyled = styled.button<Pick<ButtonProps, "bgColor">>`
     background: ${(props) =>
       props.bgColor ? darken(0.1, props.bgColor) : "var(--purple-2)"};
   }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
 `;
