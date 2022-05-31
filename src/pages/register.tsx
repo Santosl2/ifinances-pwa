@@ -10,6 +10,7 @@ import { Button, Input } from "@/components/Form";
 import { SignUpFormData } from "@/interfaces/Forms";
 import { SEO } from "@/SEO";
 import { api } from "@/services/api";
+import { GuestSSR } from "@/utils/auth/GuestSSR";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginContent, LoginWrapper } from "@styles/Login.styles";
 
@@ -129,3 +130,9 @@ export default function Register() {
     </>
   );
 }
+
+export const getServerSideProps = GuestSSR(async (ctx) => {
+  return {
+    props: {},
+  };
+});

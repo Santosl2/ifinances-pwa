@@ -12,6 +12,7 @@ import { SignInFormData } from "@/interfaces/Forms";
 import { SEO } from "@/SEO";
 import { api } from "@/services/api";
 import { changeUser } from "@/store/users/UserReducers";
+import { GuestSSR } from "@/utils/auth/GuestSSR";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginContent, LoginWrapper } from "@styles/Login.styles";
 
@@ -108,3 +109,9 @@ export default function Login() {
     </>
   );
 }
+
+export const getServerSideProps = GuestSSR(async (ctx) => {
+  return {
+    props: {},
+  };
+});
