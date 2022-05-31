@@ -1,17 +1,17 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 
 import { Header } from "@/components";
 import { Summary } from "@/components/Summary";
 import { Table } from "@/components/Table";
+import { useSelectorUser } from "@/hooks/useSelectorUser";
 import { SEO } from "@/SEO";
 import { api } from "@/services/api";
 import { AuthSSR } from "@/utils/auth/AuthSSR";
 
 export default function Home() {
-  const user = useSelector((store) => store);
+  const user = useSelectorUser();
 
-  console.log(user);
+  console.log(user.accessToken);
 
   useEffect(() => {
     api.get("/users").then((response) => {

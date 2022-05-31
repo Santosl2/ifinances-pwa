@@ -5,6 +5,17 @@ import { useEffect, useRef } from "react";
 import { OrderHeader, OrderWrapper } from "./Order.styles";
 import { OrderProps } from "./Order.types";
 
+const OrderVariants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+  hidden: {
+    opacity: 0,
+    y: "50%",
+  },
+};
+
 export function Order({ amount, icon, title }: OrderProps): JSX.Element {
   const moneyRef = useRef<HTMLSpanElement>(null);
 
@@ -34,7 +45,13 @@ export function Order({ amount, icon, title }: OrderProps): JSX.Element {
   }, []);
 
   return (
-    <OrderWrapper>
+    <OrderWrapper
+      initial="hidden"
+      animate="visible"
+      variants={OrderVariants}
+      transition={{ duration: 0.2 }}
+      whileHover={{ y: "-16px" }}
+    >
       <OrderHeader>
         <p>{title}</p>
         <img src={icon} alt="Imagem Order" />

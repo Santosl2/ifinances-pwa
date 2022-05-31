@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const OrderWrapper = styled.div`
+export const OrderWrapper = styled(motion.div)`
   padding: 1.2rem 1.5rem;
   border-radius: 0.2rem;
   background: var(--shape);
@@ -14,6 +15,7 @@ export const OrderWrapper = styled.div`
   &:hover {
     transform: translateY(-1rem);
   }
+
   strong {
     display: block;
     margin-top: 1rem;
