@@ -3,10 +3,16 @@ import { useEffect } from "react";
 import { Header } from "@/components";
 import { Summary } from "@/components/Summary";
 import { Table } from "@/components/Table";
+import { useSelectorUser } from "@/hooks/useSelectorUser";
 import { SEO } from "@/SEO";
 import { api } from "@/services/api";
+import { AuthSSR } from "@/utils/auth/AuthSSR";
 
 export default function Home() {
+  const user = useSelectorUser();
+
+  console.log(user.accessToken);
+
   useEffect(() => {
     api.get("/users").then((response) => {
       console.log(response);
@@ -31,3 +37,9 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = AuthSSR(async (ctx) => {
+  return {
+    props: {},
+  };
+});

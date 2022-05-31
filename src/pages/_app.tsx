@@ -8,10 +8,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { queryClient } from "@/services/queryClient";
-import store from "@/store";
+import { wrapper } from "@/store";
 import { GlobalStyle } from "@styles/globalStyle";
-
-import { Provider } from "react-redux";
 
 interface AppProps {
   Component: any;
@@ -19,36 +17,13 @@ interface AppProps {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   const {
-  //     [LOGIN_COOKIE_NAME]: cookieUser,
-  //     [LOGIN_COOKIE_ACCESS_TOKEN]: accessToken,
-  //     [LOGIN_COOKIE_REFRESH_TOKEN]: refreshToken,
-  //   } = parseCookies();
-
-  //   if (cookieUser && accessToken && refreshToken) {
-  //     const parse = JSON.parse(cookieUser);
-  //     const userData = {
-  //       ...parse,
-  //       refreshToken,
-  //       accessToken,
-  //     };
-  //     console.log(userData);
-  //     // dispatch(changeUser(userData));
-  //   }
-  // }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-        <GlobalStyle />
-        <ToastContainer />
-      </Provider>
+      <Component {...pageProps} />
+      <GlobalStyle />
+      <ToastContainer />
     </QueryClientProvider>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
