@@ -3,18 +3,24 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { configureStore } from "@reduxjs/toolkit";
 
 import { combinedReducer } from "./reducers";
+import { UserStateProps } from "./users/interfaces/User";
 
-const masterReducer = (state: any, action: any) => {
+type Payload = {
+  type: string;
+  payload: {
+    user: UserStateProps;
+  };
+};
+
+const masterReducer = (state: any, action: Payload) => {
   if (action.type === HYDRATE) {
     const nextState = {
       ...state,
-      counter: {
-        count: state.counter.count + action.payload.counter.count,
-      },
-      users: {
-        users: [...action.payload.users.users, ...state.users.users],
+      user: {
+        ...action.payload.user,
       },
     };
+
     return nextState;
   }
   return combinedReducer(state, action);
@@ -22,7 +28,6 @@ const masterReducer = (state: any, action: any) => {
 
 const makeStore = configureStore({
   reducer: masterReducer,
-  devTools: process.env.NODE_ENV !== "production",
 });
 
-export const wrapper = createWrapper(() => makeStore, { debug: true });
+export const wrapper = createWrapper(() => makeStore, { debug: false });
