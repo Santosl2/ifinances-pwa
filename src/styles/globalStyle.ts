@@ -1,11 +1,18 @@
 import { createGlobalStyle } from "styled-components";
 
+const personalizedBg = ["/register", "/"];
 const GlobalStyle = createGlobalStyle`
+   
+
     :root {
-        --background: #181B23;
+        --background: #eee;
+
+        
         --red: #e52e4d;
 
-        --purple: #5429CC;
+        --header-bg: #2c6f72;
+
+        --purple: #6B46C1;
         --purple-2: #6933FF;
 
         --loading-color:#2c146b;
@@ -20,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
         --gray-900: #181B23;
         --gray-800: #1F2029;
-        --gray-700: #353646;
+        --gray-700: #2d3748;
         --gray-600: #4B4D63;
     }
 
@@ -41,8 +48,17 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background: var(--background);
+     
+     
         -webkit-font-smoothing: antialiased;
+        background:  ${
+          process.browser && !personalizedBg.includes(window.location.pathname)
+            ? "var(--background)"
+            : "linear-gradient(to left top, #291924, #462643, #603568, #764892, #845ec2);"
+        }
+         
+   
+        
     }
 
     body, input, textarea, button {

@@ -24,8 +24,8 @@ export const TableBody = styled.tbody`
   td {
     padding: 1rem 2rem;
     border: 0;
-    background: #12181c;
-    color: #fff;
+    background: var(--shape);
+    color: var(--text-title);
 
     &.deposit {
       color: var(--green);

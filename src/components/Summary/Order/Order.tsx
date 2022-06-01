@@ -49,7 +49,7 @@ export function Order({ amount, icon, title }: OrderProps): JSX.Element {
       initial="hidden"
       animate="visible"
       variants={OrderVariants}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0 }}
       whileHover={{ y: "-16px" }}
     >
       <OrderHeader>

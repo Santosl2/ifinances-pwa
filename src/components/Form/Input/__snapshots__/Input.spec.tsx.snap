@@ -35,7 +35,7 @@ exports[`Input Test should match Snapshot 1`] = `
 .c1:focus {
   outline: none;
   border-bottom-width: 2px;
-  border-bottom-color: var(--purple);
+  border-bottom-color: var(--shape);
 }
 
 <div

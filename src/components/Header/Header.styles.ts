@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
-  background: var(--purple);
+  background-image: linear-gradient(
+    to right top,
+    #e7b3b5,
+    #d0a394,
+    #b3967a,
+    #928967,
+    #707c5b
+  );
 `;
 
 export const HeaderContent = styled.div`
@@ -17,17 +24,12 @@ export const HeaderContent = styled.div`
   }
 
   button {
-    font-size: 1rem;
-    color: #fff;
-    background: var(--purple-2);
-    border: 0;
     padding: 0 2rem;
-    border-radius: 0.2rem;
-    height: 3rem;
-    transition: filter 0.2s;
+    height: 2.5rem;
+    background: rgba(55, 55, 55, 0.25);
 
     &:hover {
-      filter: brightness(0.9);
+      background: rgba(55, 55, 55, 0.35);
     }
   }
 `;
