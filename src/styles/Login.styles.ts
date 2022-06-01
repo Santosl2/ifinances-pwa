@@ -18,13 +18,17 @@ export const LoginWrapper = styled(motion.main)`
 export const LoginContent = styled.form`
   width: 100%;
   max-width: 390px;
-  background-color: var(--gray-800);
+  background-color: rgba(77, 77, 77, 0.2);
+  backdrop-filter: blur(2px);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1.5rem;
+
+  border: 1px solid #f2f2f2f2;
+
   padding: 1.7rem;
-  border-radius: 0.1rem;
   min-height: 370px;
   color: white;
 `;

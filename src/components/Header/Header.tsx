@@ -1,3 +1,5 @@
+import { Button } from "@/components/Form";
+
 import { HeaderContent, HeaderWrapper } from "./Header.styles";
 
 export function Header(): JSX.Element {
@@ -5,7 +7,7 @@ export function Header(): JSX.Element {
     <HeaderWrapper>
       <HeaderContent>
         <img src="/iFinances.svg" alt="iFinances Logo" />
-        <button type="button">Nova transação</button>
+        <Button>Nova transação</Button>
       </HeaderContent>
     </HeaderWrapper>
   );

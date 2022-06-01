@@ -43,6 +43,6 @@ export const InputStyled = styled.input`
   &:focus {
     outline: none;
     border-bottom-width: 2px;
-    border-bottom-color: var(--purple);
+    border-bottom-color: var(--shape);
   }
 `;

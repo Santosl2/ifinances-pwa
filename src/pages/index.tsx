@@ -94,14 +94,18 @@ export default function Login() {
           <Input type="password" label="Senha" {...register("password")} />
           <Button
             type="submit"
-            bgColor="#36314f"
             isLoading={formState.isSubmitting}
             disabled={formState.isSubmitting}
+            bgColor="#43232d"
           >
             Entrar
           </Button>
 
-          <Button type="button" onClick={() => router.push("/register")}>
+          <Button
+            type="button"
+            bgColor="#1f5721"
+            onClick={() => router.push("/register")}
+          >
             Registre-se
           </Button>
         </LoginContent>
