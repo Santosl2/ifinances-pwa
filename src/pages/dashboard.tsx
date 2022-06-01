@@ -11,10 +11,8 @@ import { AuthSSR } from "@/utils/auth/AuthSSR";
 export default function Home() {
   const user = useSelectorUser();
 
-  console.log(user.accessToken);
-
   useEffect(() => {
-    api.get("/users").then((response) => {
+    api.get("/finances").then((response) => {
       console.log(response);
     });
   }, []);

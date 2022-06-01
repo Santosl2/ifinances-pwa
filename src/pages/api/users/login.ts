@@ -5,15 +5,14 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { SignUpFormData } from "@/interfaces/Forms";
+import { SignInFormData } from "@/interfaces/Forms";
 import { User } from "@/interfaces/User";
 import { auth, database } from "@/services/firebase";
 import { verifyPassword } from "@/utils/Hash";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  // to do create user
   if (req.method === "POST") {
-    const { email, password } = req.body?.user as SignUpFormData;
+    const { email, password } = req.body?.user as SignInFormData;
 
     const dbInstance = collection(database, "users");
 

@@ -10,7 +10,6 @@ import { auth, database } from "@/services/firebase";
 import { hashPassword } from "@/utils/Hash";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  // to do create user
   if (req.method === "POST") {
     const { name, email, password } = req.body?.user as SignUpFormData;
 
@@ -47,5 +46,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         message: "Ocorreu um erro ao cadastrar.",
       });
     }
+  } else {
+    res.setHeader("Allow", "POST");
+    res.status(405).end("Method not allowed");
   }
 };
