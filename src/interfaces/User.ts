@@ -5,3 +5,14 @@ export type User = UserCredential & {
     accessToken: string;
   };
 };
+
+export type UserData = {
+  name: string;
+  email: string;
+  accessToken: string;
+  refreshToken: string;
+};
+
+export type UserSelector = {
+  user: UserData;
+};
