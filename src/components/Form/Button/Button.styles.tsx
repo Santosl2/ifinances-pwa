@@ -14,7 +14,7 @@ export const ButtonStyled = styled.button<Pick<ButtonProps, "bgColor">>`
 
   &:hover {
     background: ${(props) =>
-      props.bgColor ? darken(0.1, props.bgColor) : "var(--purple-2)"};
+      props.bgColor ? darken(0.05, props.bgColor) : "var(--purple-2)"};
   }
 
   &:disabled {

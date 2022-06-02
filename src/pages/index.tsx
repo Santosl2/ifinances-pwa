@@ -96,14 +96,14 @@ export default function Login() {
             type="submit"
             isLoading={formState.isSubmitting}
             disabled={formState.isSubmitting}
-            bgColor="#43232d"
+            bgColor="#363F5F"
           >
             Entrar
           </Button>
 
           <Button
             type="button"
-            bgColor="#1f5721"
+            bgColor="#e52e4d"
             onClick={() => router.push("/register")}
           >
             Registre-se

@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
         --background: #eee;
 
         
-        --red: #e52e4d;
+        --red-200: #e52e4d;
 
         --header-bg: #2c6f72;
 
@@ -17,6 +17,9 @@ const GlobalStyle = createGlobalStyle`
 
         --loading-color:#2c146b;
         --loading-border-color: white;
+
+        --blue-600: #22293F;
+        --blue-500: #363F5F;
 
         --text-title: #363f5f;
         --text-body: #969cb3;
@@ -54,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
         background:  ${
           process.browser && !personalizedBg.includes(window.location.pathname)
             ? "var(--background)"
-            : "linear-gradient(to left top, #291924, #462643, #603568, #764892, #845ec2);"
+            : "linear-gradient(180deg, #363F5F 59.37%, rgba(36, 44, 74, 0.93) 73.44%);"
         }
          
    

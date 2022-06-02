@@ -13,7 +13,7 @@ exports[`Button Test should match Snapshot 1`] = `
 }
 
 .c0:hover {
-  background: #c00;
+  background: #e60000;
 }
 
 .c0:disabled {
