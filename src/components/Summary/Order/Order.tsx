@@ -54,11 +54,12 @@ export function Order({ amount, icon, title }: OrderProps): JSX.Element {
     >
       <OrderHeader>
         <p>{title}</p>
+
         <img src={icon} alt="Imagem Order" />
       </OrderHeader>
 
       <strong>
-        R${" "}
+        R$
         <span ref={moneyRef} data-amount={amount}>
           0
         </span>

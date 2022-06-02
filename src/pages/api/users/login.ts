@@ -2,21 +2,19 @@
 /* eslint-disable camelcase */
 /* eslint-disable unused-imports/no-unused-vars */
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { getDocs, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { SignInFormData } from "@/interfaces/Forms";
 import { User } from "@/interfaces/User";
-import { auth, database } from "@/services/firebase";
+import { auth, dbInstanceUsers } from "@/services/firebase";
 import { verifyPassword } from "@/utils/Hash";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const { email, password } = req.body?.user as SignInFormData;
 
-    const dbInstance = collection(database, "users");
-
-    const q = query(dbInstance, where("email", "==", email));
+    const q = query(dbInstanceUsers, where("email", "==", email));
     const queryResult = await getDocs(q);
 
     if (queryResult.size === 0) {
@@ -29,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const doc = queryResult.docs[0];
 
-      const { password: userPassword, name } = doc.data();
+      const { password: userPassword, name, id } = doc.data();
       const verifyUserPassword = await verifyPassword(password, userPassword);
 
       if (!verifyUserPassword) {
@@ -46,6 +44,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.json({
         success: true,
         user: {
+          id,
           name,
           email,
         },

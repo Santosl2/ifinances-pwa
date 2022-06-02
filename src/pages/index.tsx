@@ -63,9 +63,10 @@ export default function Login() {
       draggable: true,
       progress: undefined,
     });
-
+    console.log(response.user);
     if (response.success) {
       const userData = {
+        id: response.user.id,
         name: response.user.name,
         email: response.user.email,
         refreshToken: response.refreshToken,
