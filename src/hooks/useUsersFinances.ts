@@ -1,11 +1,10 @@
 import { useQuery, UseQueryResult } from "react-query";
 
-import { FinanceTypes } from "@/interfaces/Finance";
 import { UserFinancesResponse } from "@/interfaces/Response";
 import { getUsersFinances } from "@/services/users";
 
-export function useUsersFinances(type: FinanceTypes) {
-  return useQuery(["finances"], () => getUsersFinances(type), {
+export function useUsersFinances() {
+  return useQuery(["finances"], () => getUsersFinances(), {
     staleTime: 1000 * 20, // 20s
-  }) as UseQueryResult<UserFinancesResponse[], unknown>;
+  }) as UseQueryResult<UserFinancesResponse, unknown>;
 }
