@@ -75,7 +75,9 @@ export function Order({
           </span>
         </strong>
       ) : (
-        <Skeleton />
+        <span data-testid="skeleton-test">
+          <Skeleton />
+        </span>
       )}
     </OrderWrapper>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-node-access */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
@@ -13,5 +14,21 @@ describe("Order Test", () => {
 
     expect(screen.getByText("Teste")).toBeInTheDocument();
     expect(screen.getByAltText("Imagem Order")).toBeInTheDocument();
+  });
+
+  it("should be able to render Skeleton", async () => {
+    render(
+      <Order amount={1000} icon={OrderIcons.income} title="Teste" isLoading />
+    );
+
+    expect(screen.getByTestId("skeleton-test")).toBeInTheDocument();
+  });
+
+  it("should be match snapshot", () => {
+    const { container } = render(
+      <Order amount={1000} icon={OrderIcons.income} title="Teste" />
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

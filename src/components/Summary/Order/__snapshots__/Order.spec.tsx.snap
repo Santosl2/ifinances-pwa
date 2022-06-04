@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Test should be match snapshot 1`] = `
+<div
+  class="sc-gsnTZi jsbwHh"
+  style="opacity: 0; transform: translateY(50%) translateZ(0);"
+>
+  <header
+    class="sc-dkzDqf hpuwwA"
+  >
+    <p>
+      Teste
+    </p>
+    <img
+      alt="Imagem Order"
+      src="income.svg"
+    />
+  </header>
+  <strong>
+    R$
+    <span
+      data-amount="1000"
+    >
+      0
+    </span>
+  </strong>
+</div>
+`;

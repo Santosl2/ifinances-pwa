@@ -13,7 +13,7 @@ describe("Loading Test", () => {
     const { container } = render(<LoadingIndicator />);
 
     expect(container.firstChild).toHaveStyle({
-      borderRadius: "1rem",
+      borderRadius: "100%",
       background: "transparent",
     });
     expect(container.firstChild).toMatchSnapshot();
