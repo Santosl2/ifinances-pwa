@@ -1,5 +1,3 @@
 import { SkeletonWrapper } from "./Skeleton.styles";
 
-export function Skeleton() {
-  return <SkeletonWrapper />;
-}
+export const Skeleton = SkeletonWrapper;

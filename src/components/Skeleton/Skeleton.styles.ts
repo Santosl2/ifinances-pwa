@@ -13,7 +13,7 @@ export const SkeletonWrapper = styled.div`
     linear-gradient(#eee, #eee);
   background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px;
   width: 150px;
-  height: 17px;
-  border-radius: 7px;
+  height: 20px;
+  border-radius: 2px;
   animation: ${skeletonAnim} 1.5s infinite;
 `;
