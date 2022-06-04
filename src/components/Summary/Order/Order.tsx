@@ -2,6 +2,8 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import { useEffect, useRef } from "react";
 
+import { Skeleton } from "@/components/Skeleton/Skeleton";
+
 import { OrderHeader, OrderWrapper } from "./Order.styles";
 import { OrderProps } from "./Order.types";
 
@@ -16,10 +18,17 @@ const OrderVariants = {
   },
 };
 
-export function Order({ amount, icon, title }: OrderProps): JSX.Element {
+export function Order({
+  amount,
+  icon,
+  title,
+  isLoading = false,
+}: OrderProps): JSX.Element {
   const moneyRef = useRef<HTMLSpanElement>(null);
 
   function animateNumber(speed = 100) {
+    if (isLoading) return;
+
     let timeout!: NodeJS.Timeout;
 
     const moneyDiv = moneyRef.current!;
@@ -42,7 +51,7 @@ export function Order({ amount, icon, title }: OrderProps): JSX.Element {
 
   useEffect(() => {
     animateNumber(100);
-  }, []);
+  }, [isLoading]);
 
   return (
     <OrderWrapper
@@ -58,12 +67,16 @@ export function Order({ amount, icon, title }: OrderProps): JSX.Element {
         <img src={icon} alt="Imagem Order" />
       </OrderHeader>
 
-      <strong>
-        R$
-        <span ref={moneyRef} data-amount={amount}>
-          0
-        </span>
-      </strong>
+      {!isLoading ? (
+        <strong>
+          R$
+          <span ref={moneyRef} data-amount={amount}>
+            0
+          </span>
+        </strong>
+      ) : (
+        <Skeleton />
+      )}
     </OrderWrapper>
   );
 }
