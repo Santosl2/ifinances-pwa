@@ -1,10 +1,11 @@
 import { FinanceTypes } from "./Finance";
 
-type FinanceResponseData = {
+export type FinanceResponseData = {
+  title: string;
   amount: number;
   type: FinanceTypes;
-  userId: string;
-  date: string;
+  category: string;
+  date: number;
 };
 
 export type UserFinancesResponse = {
