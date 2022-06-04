@@ -27,11 +27,11 @@ export const TableBody = styled.tbody`
     background: var(--shape);
     color: var(--text-title);
 
-    &.deposit {
+    .income {
       color: var(--green);
     }
-    &.withdraw {
-      color: var(--red);
+    .outcome {
+      color: var(--red-200);
     }
   }
 `;
