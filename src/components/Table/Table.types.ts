@@ -1,7 +1,9 @@
 import { Column } from "react-table";
 
 export interface TableProps {
-  data: any;
+  data: {
+    [key: string]: string | number;
+  }[];
   columns: Array<Column<any>>;
 }
 
