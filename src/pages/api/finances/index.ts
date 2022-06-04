@@ -1,19 +1,37 @@
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable unused-imports/no-unused-vars */
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { getDocs, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { database } from "@/services/firebase";
+import { FinanceTypes } from "@/interfaces/Finance";
+import { dbInstanceFinances } from "@/services/firebase";
+import { getUserCookie } from "@/utils/Cookie";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
-    const dbInstance = collection(database, "users_finances");
+    const {
+      query: { type },
+    } = req;
+
+    if (
+      type !== undefined &&
+      !Object.values(FinanceTypes).find((t) => t === type)
+    ) {
+      return res.status(400).end("Type not allowed");
+    }
+
+    const { id } = getUserCookie(req);
+    if (!id) {
+      return res.status(403);
+    }
 
     const q = query(
-      dbInstance,
-      where("userId", "==", "fMnkQDlI7WcrQz6Ho5Hw5Bp9REm1")
+      dbInstanceFinances,
+      where("userId", "==", id)
+      // ,where("type", "==", type)
     );
+
     const queryResult = await getDocs(q);
 
     if (queryResult.size === 0) {
@@ -25,12 +43,34 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
       const doc = queryResult.docs;
+      let totalIncome = 0;
+      let totalOutcome = 0;
 
       const data = doc.map((item) => {
-        return item.data();
+        const itemData = item.data();
+
+        if (itemData.type === "income") {
+          totalIncome += itemData.amount;
+        }
+
+        if (itemData.type === "outcome") {
+          totalOutcome += itemData.amount;
+        }
+
+        return itemData;
       });
 
-      return res.json({ data, success: true });
+      const total = {
+        income: totalIncome,
+        outcome: totalOutcome,
+        final: totalIncome - totalOutcome,
+      };
+
+      return res.json({
+        total,
+        data,
+        success: true,
+      });
     } catch (error) {
       return res.json({
         success: false,
