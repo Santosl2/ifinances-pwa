@@ -1,60 +1,18 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-sparse-arrays */
 /* eslint-disable react/no-array-index-key */
-import { useMemo } from "react";
-import { useTable } from "react-table";
-
-import { dateFormat, moneyFormat } from "@/utils/Format";
+import { FaSortDown, FaSortUp } from "react-icons/fa";
+import { useSortBy, useTable } from "react-table";
 
 import { Container, TableBody, TableHead, TableWrapper } from "./Table.styles";
-import { CellProps, TableProps } from "./Table.types";
+import { TableProps } from "./Table.types";
 
-export function Table({ data }: TableProps): JSX.Element {
-  const formatedData = useMemo(() => {
-    return data.map((res) => {
-      return {
-        title: res.title,
-        amount: moneyFormat(res.amount, res.type),
-        category: res.category,
-        type: res.type,
-        date: dateFormat(res.date),
-      };
-    });
-  }, [data]);
-
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Titulo",
-        accessor: "title",
-      },
-      {
-        Header: "Preço",
-        accessor: "amount",
-        Cell: ({ cell: { value } }: CellProps) => (
-          <span className={value.startsWith("-") ? "outcome" : "income"}>
-            {value}
-          </span>
-        ),
-      },
-      {
-        Header: "Categoria",
-        accessor: "category",
-      },
-      {
-        Header: "Data",
-        accessor: "date",
-      },
-    ],
-    []
-  );
-
-  const values = useMemo(() => [...Object.values(formatedData)], [data]);
-
+export function Table({ columns, data }: TableProps): JSX.Element {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data: values });
+    useTable({ columns, data }, useSortBy);
 
   return (
     <Container>
@@ -63,7 +21,20 @@ export function Table({ data }: TableProps): JSX.Element {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render("Header")}
+                  <span>
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <FaSortDown size={20} />
+                      ) : (
+                        <FaSortUp size={20} />
+                      )
+                    ) : (
+                      ""
+                    )}
+                  </span>
+                </th>
               ))}
             </tr>
           ))}

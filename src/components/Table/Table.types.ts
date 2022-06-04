@@ -1,7 +1,8 @@
-import { FinanceResponseData } from "@/interfaces/Response";
+import { Column } from "react-table";
 
 export interface TableProps {
-  data: FinanceResponseData[];
+  data: any;
+  columns: Array<Column<any>>;
 }
 
 export interface CellProps {
