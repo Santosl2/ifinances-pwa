@@ -9,4 +9,5 @@ export interface OrderProps {
   title: string;
   amount: number;
   icon: OrderIcons;
+  isLoading?: boolean;
 }
