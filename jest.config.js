@@ -15,6 +15,12 @@ const customJestConfig = {
     "^@/components/(.*)$": "<rootDir>/src/components/$1",
     "^@/utils/(.*)$": "<rootDir>/src/utils/$1",
     "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
+    "^@/hooks/(.*)$": "<rootDir>/src/hooks/$1",
+    "^@/tests/(.*)$": "<rootDir>/src/tests/$1",
+    "^@/store/(.*)/(.*)$": "<rootDir>/src/store/$1/$2",
+    "^@/store/reducers$": "<rootDir>/src/store/reducers.ts",
+    "^@/services/(.*)$": "<rootDir>/src/services/api.ts",
+    "^@/constants$": "<rootDir>/src/constants/index.ts",
   },
   testEnvironment: "jest-environment-jsdom",
 };

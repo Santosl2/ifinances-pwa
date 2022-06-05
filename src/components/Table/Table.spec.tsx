@@ -2,6 +2,7 @@
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
+import { renderWithStore } from "@/tests/readerWithStore";
 import { render, screen } from "@testing-library/react";
 
 import { Table } from "./Table";
@@ -32,7 +33,7 @@ describe("Table test", () => {
   });
 
   it("should render table", async () => {
-    render(
+    renderWithStore(
       <Table columns={mockedTableData.columns} data={mockedTableData.data} />
     );
 

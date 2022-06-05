@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { useSelectorModal } from "@/hooks/useSelectorModal";
 import { closeModal } from "@/store/modal/ModalReducers";
 
+ReactModal.setAppElement("body");
+
 export function CreateTransactionModal() {
   const modal = useSelectorModal();
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export function CreateTransactionModal() {
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
     >
-      ffff
+      <h4>Cadastrar transação</h4>
     </ReactModal>
   );
 }

@@ -32,4 +32,7 @@ const makeStore = configureStore({
   reducer: masterReducer,
 });
 
+export type AppDispatch = typeof makeStore.dispatch;
+export type RootState = ReturnType<typeof makeStore.getState>;
+
 export const wrapper = createWrapper(() => makeStore, { debug: false });
