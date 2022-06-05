@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useMemo } from "react";
 
-import { Header } from "@/components";
+import { Header, LoadingIndicator } from "@/components";
 import { Summary } from "@/components/Summary";
 import { Table } from "@/components/Table";
 import { CellProps } from "@/components/Table/Table.types";
@@ -15,7 +15,7 @@ export default function Home() {
   const user = useSelectorUser();
   const { isLoading, data: registers, isFetching, error } = useUsersFinances();
 
-  const formatedData = useMemo(() => {
+  const formattedData = useMemo(() => {
     return (
       registers &&
       registers.data.map((res) => {
@@ -58,8 +58,8 @@ export default function Home() {
   );
 
   const values = useMemo(
-    () => [...Object.values(formatedData || [])],
-    [formatedData]
+    () => [...Object.values(formattedData || [])],
+    [formattedData]
   );
 
   return (
@@ -68,7 +68,14 @@ export default function Home() {
       <Header />
       <main>
         <Summary data={registers} isLoading={isLoading} />
-        {registers && registers.data?.length >= 0 && (
+        {isLoading && (
+          <LoadingIndicator
+            width="40px"
+            height="40px"
+            color="var(--gray-900)"
+          />
+        )}
+        {!isLoading && registers && registers.data?.length >= 0 && (
           <Table data={values} columns={columns} />
         )}
       </main>
