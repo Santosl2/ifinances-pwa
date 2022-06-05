@@ -1,17 +1,8 @@
 import { useSelector } from "react-redux";
 
-type UserData = {
-  name: string;
-  email: string;
-  accessToken: string;
-  refreshToken: string;
-};
-
-type User = {
-  user: UserData;
-};
+import { UserData, UserSelector } from "@/interfaces/User";
 
 export function useSelectorUser(): UserData {
-  const userData = useSelector<User>((state) => state.user) as UserData;
+  const userData = useSelector<UserSelector>((state) => state.user) as UserData;
   return userData;
 }

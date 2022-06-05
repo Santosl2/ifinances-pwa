@@ -63,9 +63,10 @@ export default function Login() {
       draggable: true,
       progress: undefined,
     });
-
+    console.log(response.user);
     if (response.success) {
       const userData = {
+        id: response.user.id,
         name: response.user.name,
         email: response.user.email,
         refreshToken: response.refreshToken,
@@ -96,14 +97,14 @@ export default function Login() {
             type="submit"
             isLoading={formState.isSubmitting}
             disabled={formState.isSubmitting}
-            bgColor="#43232d"
+            bgColor="#363F5F"
           >
             Entrar
           </Button>
 
           <Button
             type="button"
-            bgColor="#1f5721"
+            bgColor="#e52e4d"
             onClick={() => router.push("/register")}
           >
             Registre-se

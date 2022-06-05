@@ -115,14 +115,18 @@ export default function Register() {
 
           <Button
             type="submit"
-            bgColor="#36314f"
             isLoading={formState.isSubmitting}
             disabled={formState.isSubmitting}
+            bgColor="#363F5F"
           >
             Registrar
           </Button>
 
-          <Button type="button" onClick={() => router.push("/")}>
+          <Button
+            type="button"
+            bgColor="#E52E4D"
+            onClick={() => router.push("/")}
+          >
             Voltar
           </Button>
         </LoginContent>

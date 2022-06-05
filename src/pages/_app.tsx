@@ -7,9 +7,13 @@ import { QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import NextNProgress from "nextjs-progressbar";
+
 import { queryClient } from "@/services/queryClient";
 import { wrapper } from "@/store";
 import { GlobalStyle } from "@styles/globalStyle";
+
+import { ReactQueryDevtools } from "react-query/devtools";
 
 interface AppProps {
   Component: any;
@@ -21,6 +25,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
       <GlobalStyle />
+      <ReactQueryDevtools />
+      <NextNProgress
+        color="#29D"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow
+      />
+
       <ToastContainer />
     </QueryClientProvider>
   );

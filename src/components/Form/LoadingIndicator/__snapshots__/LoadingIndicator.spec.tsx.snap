@@ -9,7 +9,7 @@ exports[`Loading Test should render Loading 1`] = `
   border: 2px solid transparent;
   border-right-color: var(--loading-border-color);
   margin: 0 auto;
-  border-radius: 1rem;
+  border-radius: 100%;
   -webkit-animation: bmMtkP 1.5s infinite;
   animation: bmMtkP 1.5s infinite;
 }

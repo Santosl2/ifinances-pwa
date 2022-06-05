@@ -29,7 +29,8 @@ export const InputWrapper = styled.div<Pick<InputProps, "error">>`
 
   label {
     cursor: pointer;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
   }
 `;
 export const InputStyled = styled.input`

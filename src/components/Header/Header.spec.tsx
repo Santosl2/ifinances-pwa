@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-node-access */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
@@ -12,5 +13,11 @@ describe("Header Test", () => {
 
     expect(screen.getByText("Nova transação")).toBeInTheDocument();
     expect(screen.getByAltText("iFinances Logo")).toBeInTheDocument();
+  });
+
+  it("should be match snapshot", () => {
+    const { container } = render(<Header />);
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

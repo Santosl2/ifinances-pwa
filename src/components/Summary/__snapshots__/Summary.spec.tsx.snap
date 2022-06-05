@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Summary test should br match snapshot 1`] = `
+.c1 {
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.2rem;
+  background: var(--shape);
+  color: var(--text-title);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+  -webkit-transition: -webkit-transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.c1:hover {
+  -webkit-transform: translateY(-1rem);
+  -ms-transform: translateY(-1rem);
+  transform: translateY(-1rem);
+}
+
+.c1 strong {
+  display: block;
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 3rem;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 img {
+  margin-left: auto;
+}
+
+.c0 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 1.5rem;
+  margin-top: -9rem;
+  margin-bottom: 5rem;
+}
+
+.c0 div:last-child {
+  background-color: var(--green);
+  color: var(--shape);
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+    style="opacity: 0; transform: translateY(50%) translateZ(0);"
+  >
+    <header
+      class="c2"
+    >
+      <p>
+        Entradas
+      </p>
+      <img
+        alt="Imagem Order"
+        src="income.svg"
+      />
+    </header>
+    <strong>
+      R$
+      <span
+        data-amount="0"
+      >
+        0
+      </span>
+    </strong>
+  </div>
+  <div
+    class="c1"
+    style="opacity: 0; transform: translateY(50%) translateZ(0);"
+  >
+    <header
+      class="c2"
+    >
+      <p>
+        Saídas
+      </p>
+      <img
+        alt="Imagem Order"
+        src="outcome.svg"
+      />
+    </header>
+    <strong>
+      R$
+      <span
+        data-amount="0"
+      >
+        0
+      </span>
+    </strong>
+  </div>
+  <div
+    class="c1"
+    style="opacity: 0; transform: translateY(50%) translateZ(0);"
+  >
+    <header
+      class="c2"
+    >
+      <p>
+        Total
+      </p>
+      <img
+        alt="Imagem Order"
+        src="total.svg"
+      />
+    </header>
+    <strong>
+      R$
+      <span
+        data-amount="0"
+      >
+        0
+      </span>
+    </strong>
+  </div>
+</div>
+`;

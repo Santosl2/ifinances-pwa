@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Test should be match snapshot 1`] = `
+<header
+  class="sc-jSMfEi eOWLDg"
+>
+  <div
+    class="sc-gKXOVf xNUQv"
+  >
+    <img
+      alt="iFinances Logo"
+      src="/iFinances.svg"
+    />
+    <button
+      class="sc-hKMtZM cNKgWr"
+    >
+      Nova transação
+    </button>
+  </div>
+</header>
+`;

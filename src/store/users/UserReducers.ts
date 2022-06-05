@@ -1,9 +1,10 @@
+import { UserData } from "@/interfaces/User";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { UserStateProps } from "./interfaces/User";
 import { reducers } from "./reducers";
 
-const initialState: UserStateProps = {
+const initialState: UserData = {
+  id: "",
   accessToken: "",
   email: "",
   name: "",

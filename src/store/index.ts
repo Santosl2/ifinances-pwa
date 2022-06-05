@@ -1,14 +1,14 @@
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 
+import { UserData } from "@/interfaces/User";
 import { configureStore } from "@reduxjs/toolkit";
 
 import { combinedReducer } from "./reducers";
-import { UserStateProps } from "./users/interfaces/User";
 
 type Payload = {
   type: string;
   payload: {
-    user: UserStateProps;
+    user: UserData;
   };
 };
 

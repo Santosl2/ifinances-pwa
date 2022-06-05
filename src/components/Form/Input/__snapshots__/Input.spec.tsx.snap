@@ -19,7 +19,8 @@ exports[`Input Test should match Snapshot 1`] = `
 
 .c0 label {
   cursor: pointer;
-  font-family: "Roboto",sans-serif;
+  font-family: "Poppins",sans-serif;
+  font-weight: 300;
 }
 
 .c1 {
