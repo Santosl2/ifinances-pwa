@@ -63,7 +63,7 @@ export default function Login() {
       draggable: true,
       progress: undefined,
     });
-    console.log(response.user);
+
     if (response.success) {
       const userData = {
         id: response.user.id,
