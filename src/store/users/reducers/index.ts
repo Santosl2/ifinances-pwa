@@ -14,6 +14,7 @@ export const reducers = {
         })
       );
     }
+
     api.defaults.headers.common.Authorization = `Bearer ${payload.accessToken}`;
 
     return {

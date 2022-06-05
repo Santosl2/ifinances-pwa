@@ -1,5 +1,6 @@
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 
+import { ModalProps } from "@/interfaces/Modal";
 import { UserData } from "@/interfaces/User";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -9,6 +10,7 @@ type Payload = {
   type: string;
   payload: {
     user: UserData;
+    modal: ModalProps;
   };
 };
 
