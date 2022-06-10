@@ -1,11 +1,14 @@
-import { ModalProps } from "@/interfaces/Modal";
-import { PayloadAction } from "@reduxjs/toolkit";
-
 export const reducers = {
-  closeModal: (state: any, { payload }: PayloadAction<ModalProps>) => {
+  closeModal: (state: any) => {
     return {
       ...state,
-      ...payload,
+      isOpen: false,
+    };
+  },
+  openModal: (state: any) => {
+    return {
+      ...state,
+      isOpen: true,
     };
   },
 };
