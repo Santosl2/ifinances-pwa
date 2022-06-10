@@ -2,17 +2,14 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import { Button } from "@/components/Form";
-import { closeModal } from "@/store/modal/ModalReducers";
+import { openModal } from "@/store/modal/ModalReducers";
 
 import { HeaderContent, HeaderWrapper } from "./Header.styles";
 
 export function Header(): JSX.Element {
   const dispatch = useDispatch();
 
-  const handleOpenModal = useCallback(
-    () => dispatch(closeModal({ isOpen: true })),
-    []
-  );
+  const handleOpenModal = useCallback(() => dispatch(openModal()), []);
   return (
     <HeaderWrapper>
       <HeaderContent>
