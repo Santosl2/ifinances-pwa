@@ -28,7 +28,7 @@ const masterReducer = (state: any, action: Payload) => {
   return combinedReducer(state, action);
 };
 
-const makeStore = configureStore({
+export const makeStore = configureStore({
   reducer: masterReducer,
 });
 
