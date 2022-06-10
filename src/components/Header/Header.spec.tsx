@@ -1,14 +1,31 @@
+/* eslint-disable no-promise-executor-return */
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
 import { renderWithStore } from "@/tests/readerWithStore";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 
 import { Header } from "./Header";
 
+// const mockDispatch = jest.fn();
+
+// jest.mock("react-redux", () => ({
+//   useDispatch: () => mockDispatch,
+// }));
+
+// const useDispatchMock = reactRedux.useDispatch;
+
 describe("Header Test", () => {
+  // beforeEach(() => {
+  //   // useDispatchMock.mockImplementation(() => () => {});
+  // });
+
+  // afterEach(() => {
+  //   useDispatchMock.mockClear();
+  // });
+
   it("should render Header", () => {
     renderWithStore(<Header />);
 
@@ -21,4 +38,13 @@ describe("Header Test", () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it.todo("should be open modal");
+  // renderWithStore(<Header />);
+  // const useDispatchSpy = jest.spyOn(redux, "useDispatch");
+  // const mockDispatchFn = jest.fn();
+  // useDispatchSpy.mockReturnValue(mockDispatchFn);
+  // const btnClick = screen.getByText("Nova transação");
+  // fireEvent(btnClick, new MouseEvent("click", { bubbles: true }));
+  // expect(mockDispatchFn).toHaveBeenCalled();
 });
