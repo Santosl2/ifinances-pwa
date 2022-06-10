@@ -11,10 +11,7 @@ export function CreateTransactionModal() {
   const modal = useSelectorModal();
   const dispatch = useDispatch();
 
-  const handleCloseModal = useCallback(
-    () => dispatch(closeModal({ isOpen: false })),
-    []
-  );
+  const handleCloseModal = useCallback(() => dispatch(closeModal()), []);
 
   return (
     <ReactModal
