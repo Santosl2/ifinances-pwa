@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import NextNProgress from "nextjs-progressbar";
 
+import { CreateTransactionModal } from "@/components";
 import { queryClient } from "@/services/queryClient";
 import { wrapper } from "@/store";
 import { GlobalStyle } from "@styles/globalStyle";
@@ -33,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         height={3}
         showOnShallow
       />
-
+      <CreateTransactionModal />
       <ToastContainer />
     </QueryClientProvider>
   );

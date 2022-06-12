@@ -1,14 +1,46 @@
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable unused-imports/no-unused-vars */
-import { getDocs, query, where } from "firebase/firestore";
+import { addDoc, getDocs, orderBy, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { FinanceTypes } from "@/interfaces/Finance";
+import { CreateTransactionModalFormData } from "@/interfaces/Forms";
 import { dbInstanceFinances } from "@/services/firebase";
 import { getUserCookie } from "@/utils/Cookie";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const { id } = getUserCookie(req);
+  if (!id) {
+    return res.status(403);
+  }
+
+  if (req.method === "POST") {
+    const { transactionName, price, category, type } = req.body
+      ?.data as CreateTransactionModalFormData;
+
+    try {
+      const data = await addDoc(dbInstanceFinances, {
+        amount: price,
+        category,
+        title: transactionName,
+        type,
+        userId: id,
+        createdAt: new Date().getTime(),
+      });
+
+      return res.json({
+        success: true,
+      });
+    } catch (error) {
+      return res.json({
+        success: false,
+        message: "Ocorreu um erro ao cadastrar transação.",
+      });
+    }
+    return;
+  }
+
   if (req.method === "GET") {
     const {
       query: { type },
@@ -21,15 +53,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).end("Type not allowed");
     }
 
-    const { id } = getUserCookie(req);
-    if (!id) {
-      return res.status(403);
-    }
-
     const q = query(
       dbInstanceFinances,
-      where("userId", "==", id)
-      // ,where("type", "==", type)
+      where("userId", "==", id),
+      orderBy("createdAt", "desc")
     );
 
     const queryResult = await getDocs(q);
@@ -74,11 +101,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     } catch (error) {
       return res.json({
         success: false,
-        message: "Ocorreu um erro ao cadastrar.",
+        message: "Ocorreu um erro ao cadastrar transação.",
       });
     }
-  } else {
-    res.setHeader("Allow", "GET");
-    res.status(405).end("Method not allowed");
   }
+
+  // res.setHeader("Allow", "GET");
+  res.status(405).end("Method not allowed");
 };

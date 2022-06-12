@@ -9,3 +9,12 @@ export type SignInFormData = {
   email: string;
   password: string;
 };
+
+export type TransactionTypes = "income" | "outcome";
+
+export type CreateTransactionModalFormData = {
+  transactionName: string;
+  price: number;
+  category: string;
+  type: TransactionTypes;
+};
