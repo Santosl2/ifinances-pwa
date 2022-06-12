@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable unused-imports/no-unused-vars */
-import { addDoc, getDocs, query, where } from "firebase/firestore";
+import { addDoc, getDocs, orderBy, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { FinanceTypes } from "@/interfaces/Finance";
@@ -55,8 +55,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const q = query(
       dbInstanceFinances,
-      where("userId", "==", id)
-      // orderBy("createdAt", "desc")
+      where("userId", "==", id),
+      orderBy("createdAt", "desc")
     );
 
     const queryResult = await getDocs(q);
