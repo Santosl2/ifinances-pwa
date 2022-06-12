@@ -2,20 +2,18 @@
 import { useCallback, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ReactModal from "react-modal";
-import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 import * as yup from "yup";
 
 import { Button } from "@/components/Form";
+import { useMutationCreateFinance } from "@/hooks/useMutations";
 import { useSelectorModal } from "@/hooks/useSelectorModal";
 import {
   CreateTransactionModalFormData,
   TransactionTypes,
 } from "@/interfaces/Forms";
-import { api } from "@/services/api";
-import { queryClient } from "@/services/queryClient";
 import { closeModal } from "@/store/modal/ModalReducers";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -39,20 +37,7 @@ export function CreateTransactionModal() {
   const dispatch = useDispatch();
   const [type, setType] = useState<TransactionTypes>("income");
 
-  const createTransaction = useMutation(
-    async (data: CreateTransactionModalFormData) => {
-      const response = await api.post("/finances", {
-        data,
-      });
-
-      return response.data;
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("finances");
-      },
-    }
-  );
+  const createTransaction = useMutationCreateFinance();
 
   const handleCloseModal = useCallback(() => dispatch(closeModal()), []);
 
