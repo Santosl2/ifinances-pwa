@@ -16,3 +16,8 @@ export type UserFinancesResponse = {
     final: number;
   };
 };
+
+export type DefaultResponse = {
+  message?: string;
+  success: boolean;
+};
