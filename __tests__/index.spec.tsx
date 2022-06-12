@@ -7,7 +7,7 @@ import mockAxios from "jest-mock-axios";
 import { renderWithStoreAndClient } from "@/tests/renderWithStoreAndClient";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 
-import IndexPage from "../index";
+import IndexPage from "../src/pages";
 
 const fakeData = {
   success: true,
