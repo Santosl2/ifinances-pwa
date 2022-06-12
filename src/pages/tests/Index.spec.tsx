@@ -115,4 +115,14 @@ describe("Index Page", () => {
 
     expect(push).toHaveBeenCalledWith("/dashboard");
   });
+
+  it("should be redirect to register", () => {
+    renderWithStoreAndClient(<IndexPage />);
+
+    const registerBtn = screen.getByText("Registre-se");
+
+    fireEvent.click(registerBtn);
+
+    expect(push).toHaveBeenCalledWith("/register");
+  });
 });
