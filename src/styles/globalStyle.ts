@@ -98,11 +98,12 @@ const GlobalStyle = createGlobalStyle`
 
     .react-modal-content {
         width: 100%;
-        max-width: 576px;
+        max-width: 476px;
         background: var(--background);
         padding: 3rem;
         position: relative;
         border-radius: 0.25rem;
+        margin: 0 1rem ;
 
         animation: modalAnimation 0.3s;
     }
