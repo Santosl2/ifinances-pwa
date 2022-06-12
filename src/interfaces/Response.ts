@@ -1,4 +1,5 @@
 import { FinanceTypes } from "./Finance";
+import { UserData } from "./User";
 
 export type FinanceResponseData = {
   title: string;
@@ -21,3 +22,7 @@ export type DefaultResponse = {
   message?: string;
   success: boolean;
 };
+
+export type LoginResponse = DefaultResponse & {
+  user: Omit<UserData, "refreshToken" | "accessToken">;
+} & Pick<UserData, "refreshToken" | "accessToken">;
