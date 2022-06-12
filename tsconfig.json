@@ -20,6 +20,6 @@
       "@/*":["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "__tests__/jest.setup.js", "tsconfig.jest.json"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "/jest.setup.js", "tsconfig.jest.json"],
   "exclude": ["node_modules"]
 }
