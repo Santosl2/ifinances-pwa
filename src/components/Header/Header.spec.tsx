@@ -4,7 +4,7 @@
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
-import { renderWithStore } from "@/tests/readerWithStore";
+import { renderWithStoreAndClient } from "@/tests/renderWithStoreAndClient";
 import { screen } from "@testing-library/react";
 
 import { Header } from "./Header";
@@ -27,14 +27,14 @@ describe("Header Test", () => {
   // });
 
   it("should render Header", () => {
-    renderWithStore(<Header />);
+    renderWithStoreAndClient(<Header />);
 
     expect(screen.getByText("Nova transação")).toBeInTheDocument();
     expect(screen.getByAltText("iFinances Logo")).toBeInTheDocument();
   });
 
   it("should be match snapshot", () => {
-    const { container } = renderWithStore(<Header />);
+    const { container } = renderWithStoreAndClient(<Header />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
