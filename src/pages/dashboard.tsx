@@ -5,20 +5,18 @@ import { Header, LoadingIndicator } from "@/components";
 import { Summary } from "@/components/Summary";
 import { Table } from "@/components/Table";
 import { CellProps } from "@/components/Table/Table.types";
-import { useSelectorUser } from "@/hooks/useSelectorUser";
 import { useUsersFinances } from "@/hooks/useUsersFinances";
 import { SEO } from "@/SEO";
 import { AuthSSR } from "@/utils/auth/AuthSSR";
 import { dateFormat, moneyFormat } from "@/utils/Format";
 
 export default function Home() {
-  const user = useSelectorUser();
-  const { isLoading, data: registers, isFetching, error } = useUsersFinances();
+  const { isLoading, data: registers } = useUsersFinances();
 
   const formattedData = useMemo(() => {
     return (
       registers &&
-      registers.data.map((res) => {
+      registers.data?.map((res) => {
         return {
           title: res.title,
           amount: moneyFormat(res.amount, res.type),
@@ -75,7 +73,7 @@ export default function Home() {
             color="var(--gray-900)"
           />
         )}
-        {!isLoading && registers && registers.data?.length >= 0 && (
+        {!isLoading && formattedData && (
           <Table data={values} columns={columns} />
         )}
       </main>

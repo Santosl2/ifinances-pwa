@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -8,9 +7,9 @@ import { useRouter } from "next/router";
 import * as yup from "yup";
 
 import { Button, Input } from "@/components/Form";
+import { useMutationLoginUser } from "@/hooks/useMutations";
 import { SignInFormData } from "@/interfaces/Forms";
 import { SEO } from "@/SEO";
-import { api } from "@/services/api";
 import { changeUser } from "@/store/users/UserReducers";
 import { GuestSSR } from "@/utils/auth/GuestSSR";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -39,13 +38,8 @@ export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const loginUser = useMutation(async (user: SignInFormData) => {
-    const response = await api.post("/users/login", {
-      user,
-    });
+  const loginUser = useMutationLoginUser();
 
-    return response.data;
-  });
   const { register, handleSubmit, formState, reset } = useForm<SignInFormData>({
     resolver: yupResolver(loginSchema),
   });
@@ -74,6 +68,7 @@ export default function Login() {
       };
 
       dispatch(changeUser(userData));
+
       router.push("/dashboard");
     }
 
