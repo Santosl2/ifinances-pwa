@@ -103,6 +103,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 3rem;
         position: relative;
         border-radius: 0.25rem;
+
+        animation: modalAnimation 0.3s;
     }
 
     .react-modal-close {
@@ -112,9 +114,10 @@ const GlobalStyle = createGlobalStyle`
         border: 0;
         background: transparent;
         transition: filter 0.2s;
+        cursor: pointer;
 
         &:hover {
-            filter: brightness(0.9);
+            filter: brightness(0.7);
         }
     }
 
@@ -122,6 +125,18 @@ const GlobalStyle = createGlobalStyle`
     max-width: 1120px;
     margin: 0 auto;
     padding: 2.5rem;
+    }
+
+    @keyframes modalAnimation {
+        from {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 `;
 
