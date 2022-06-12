@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 import { RootState } from "@/store";
 import { combinedReducer } from "@/store/reducers";
@@ -36,6 +37,7 @@ export const renderWithStoreAndClient = (
         <QueryClientProvider client={queryClientTest}>
           {children}
         </QueryClientProvider>
+        <ToastContainer />
       </Provider>
     );
   }
