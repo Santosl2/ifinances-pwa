@@ -1,9 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useMemo } from "react";
 
-import { Header, LoadingIndicator } from "@/components";
-import { Summary } from "@/components/Summary";
-import { Table } from "@/components/Table";
+import { Header, LoadingIndicator, Summary, Table } from "@/components";
 import { CellProps } from "@/components/Table/Table.types";
 import { useUsersFinances } from "@/hooks/useUsersFinances";
 import { SEO } from "@/SEO";
@@ -71,6 +69,7 @@ export default function Home() {
             width="40px"
             height="40px"
             color="var(--gray-900)"
+            data-testid="loadingTest"
           />
         )}
         {!isLoading && formattedData && (

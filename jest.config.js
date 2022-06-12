@@ -12,6 +12,7 @@ const customJestConfig = {
 
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
+    "^@/components$": "<rootDir>/src/components/index.ts",
     "^@/components/(.*)$": "<rootDir>/src/components/$1",
     "^@/utils/(.*)$": "<rootDir>/src/utils/$1",
     "^@/pages/(.*)$": "<rootDir>/src/pages/$1",

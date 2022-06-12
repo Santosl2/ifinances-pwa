@@ -5,7 +5,7 @@ import { SummaryProps } from "./Summary.types";
 
 export function Summary({ data, isLoading }: SummaryProps): JSX.Element {
   return (
-    <SummaryWrapper>
+    <SummaryWrapper data-testid="summaryTest">
       <Order
         title="Entradas"
         amount={data?.total?.income || 0}

@@ -8,7 +8,7 @@ import mockAxios from "jest-mock-axios";
 import { renderWithStoreAndClient } from "@/tests/renderWithStoreAndClient";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 
-import RegisterPage from "../register";
+import RegisterPage from "../src/pages/register";
 
 const push = jest.fn();
 const useRouter = jest.spyOn(require("next/router"), "useRouter");

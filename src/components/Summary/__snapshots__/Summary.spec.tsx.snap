@@ -53,6 +53,7 @@ exports[`Summary test should br match snapshot 1`] = `
 
 <div
   class="c0"
+  data-testid="summaryTest"
 >
   <div
     class="c1"
