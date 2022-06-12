@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import NextNProgress from "nextjs-progressbar";
 
-import { makeServer } from "@/../miragejs/server";
 import { CreateTransactionModal } from "@/components";
 import { queryClient } from "@/services/queryClient";
 import { wrapper } from "@/store";
@@ -22,9 +21,9 @@ interface AppProps {
   pageProps: any;
 }
 
-if (process.env.NODE_ENV === "development") {
-  makeServer();
-}
+// if (process.env.NODE_ENV === "development") {
+//   makeServer();
+// }
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

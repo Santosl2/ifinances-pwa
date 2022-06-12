@@ -53,7 +53,7 @@ describe("Index Page", () => {
   it("should not be able to login", async () => {
     renderWithStoreAndClient(<IndexPage />);
 
-    mockAxios.post.mockResolvedValueOnce({
+    mockAxios.post.mockResolvedValue({
       data: {
         ...fakeData,
         success: false,
@@ -90,7 +90,7 @@ describe("Index Page", () => {
   it("should be able to login", async () => {
     renderWithStoreAndClient(<IndexPage />);
 
-    mockAxios.post.mockResolvedValueOnce({
+    mockAxios.post.mockResolvedValue({
       data: fakeData,
     });
 

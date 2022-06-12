@@ -36,7 +36,7 @@ describe("CreateTransactionModal test", () => {
   it("should be able to create a transaction", async () => {
     render();
 
-    mockAxios.post.mockResolvedValueOnce({
+    mockAxios.post.mockResolvedValue({
       data: { success: true, message: "" },
     });
 
@@ -74,7 +74,7 @@ describe("CreateTransactionModal test", () => {
   it("should not be able to create a transaction when values missing", async () => {
     render();
 
-    mockAxios.post.mockResolvedValueOnce({
+    mockAxios.post.mockResolvedValue({
       data: { success: true, message: "" },
     });
 
