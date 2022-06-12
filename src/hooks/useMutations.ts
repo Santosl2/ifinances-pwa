@@ -9,7 +9,7 @@ export function useMutationCreateFinance() {
     async (data: CreateTransactionModalFormData) => createUserFinances(data),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries("finances");
+        queryClient?.invalidateQueries("finances");
       },
     }
   );

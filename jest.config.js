@@ -21,6 +21,7 @@ const customJestConfig = {
     "^@/store/(.*)$": "<rootDir>/src/store/$1",
     "^@/store$": "<rootDir>/src/store/index.ts",
     "^@/store/reducers$": "<rootDir>/src/store/reducers.ts",
+    "^@/services/users$": "<rootDir>/src/services/users",
     "^@/services/(.*)$": "<rootDir>/src/services/api.ts",
     "^@/constants$": "<rootDir>/src/constants/index.ts",
   },
