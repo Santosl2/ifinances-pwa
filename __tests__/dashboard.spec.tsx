@@ -46,6 +46,7 @@ describe("Dashboard Page", () => {
   afterEach(() => {
     mockAxios.reset();
     useUsersFinances.mockClear();
+    useMutationDeleteFinance.mockClear();
   });
 
   it("should render Dashboard Page", () => {

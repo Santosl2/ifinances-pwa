@@ -156,4 +156,50 @@ describe("Register Page", () => {
     });
     expect(screen.getByText("Seja bem-vindo(a)")).toBeInTheDocument();
   });
+
+  it("should be not able to Register user when e-mail already exists", async () => {
+    renderWithStoreAndClient(<RegisterPage />);
+
+    mockAxios.post.mockResolvedValue({
+      data: fakeDataSuccess,
+    });
+
+    const nameInput = screen.getByPlaceholderText("Nome");
+    const emailInput = screen.getByPlaceholderText("E-mail");
+    const passwordInput = screen.getByPlaceholderText("Senha");
+    const repeatPassInput = screen.getByPlaceholderText("Repetir senha");
+    const registerBtn = screen.getByText("Registrar");
+
+    fireEvent.change(nameInput, { target: { value: fakeDataSuccess.name } });
+    fireEvent.change(emailInput, { target: { value: fakeDataSuccess.email } });
+
+    fireEvent.change(passwordInput, {
+      target: { value: fakeDataSuccess.password },
+    });
+
+    fireEvent.change(repeatPassInput, {
+      target: { value: fakeDataSuccess.passwordRepeat },
+    });
+
+    mockAxios.post.mockResolvedValue({
+      data: {
+        message: "E-mail já cadastrado.",
+        success: false,
+      },
+    });
+
+    await waitFor(() => {
+      fireEvent.click(registerBtn);
+    });
+
+    expect(mockAxios.post).toHaveBeenCalledWith("/users/create", {
+      user: {
+        email: fakeDataSuccess.email,
+        name: fakeDataSuccess.name,
+        password: fakeDataSuccess.password,
+        password_confirmation: fakeDataSuccess.passwordRepeat,
+      },
+    });
+    expect(screen.getByText("E-mail já cadastrado.")).toBeInTheDocument();
+  });
 });
