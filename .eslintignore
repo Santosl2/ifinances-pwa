@@ -2,3 +2,4 @@ node_modules
 .next
 dist
 build
+*.stories.tsx
