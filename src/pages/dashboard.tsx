@@ -10,6 +10,7 @@ import {
   Summary,
   Table,
   NoResults,
+  Footer,
 } from "@/components";
 import { CellProps } from "@/components/Table/Table.types";
 import { useMutationDeleteFinance } from "@/hooks/useMutations";
@@ -125,6 +126,7 @@ export default function Home() {
           <Table data={values} columns={columns} />
         )}
         {!formattedData && !isLoading && <NoResults />}
+        <Footer />
       </DashboardWrapper>
     </>
   );
