@@ -9,6 +9,8 @@ Take control of your finances simple and fast 🚀
 
 The design of this project was made by Tiago Luchtenberg and adapted for this project.
 
+![https://imgur.com/CLkX0wm.gif](https://imgur.com/CLkX0wm.gif)
+
 <br/>
 
 - [Figma Layout](https://www.figma.com/file/fo9AynSWDylQSXHVPY39Rp/dtmoney-re-design?node-id=35212%3A1490)
