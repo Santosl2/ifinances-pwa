@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { transparentize } from "polished";
 import styled from "styled-components";
 
@@ -5,7 +6,7 @@ export const HeaderWrapper = styled.header`
   background: linear-gradient(180deg, #363f5f 0%, #202538 100%);
 `;
 
-export const HeaderContent = styled.div`
+export const HeaderContent = styled(motion.div)`
   max-width: 1120px;
   margin: 0 auto;
   padding: 2rem 1rem 12rem;

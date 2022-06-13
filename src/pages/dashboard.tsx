@@ -7,6 +7,7 @@ import { useUsersFinances } from "@/hooks/useUsersFinances";
 import { SEO } from "@/SEO";
 import { AuthSSR } from "@/utils/auth/AuthSSR";
 import { dateFormat, moneyFormat } from "@/utils/Format";
+import { DashboardWrapper } from "@styles/Dashboard.styles";
 
 export default function Home() {
   const { isLoading, data: registers } = useUsersFinances();
@@ -62,7 +63,7 @@ export default function Home() {
     <>
       <SEO title="Teste" />
       <Header />
-      <main>
+      <DashboardWrapper>
         <Summary data={registers} isLoading={isLoading} />
         {isLoading && (
           <LoadingIndicator
@@ -75,7 +76,7 @@ export default function Home() {
         {!isLoading && formattedData && (
           <Table data={values} columns={columns} />
         )}
-      </main>
+      </DashboardWrapper>
     </>
   );
 }
