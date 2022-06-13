@@ -28,7 +28,12 @@ ReactModal.setAppElement("body");
 
 const modalSchema = yup.object().shape({
   transactionName: yup.string().required("Campo obrigatório"),
-  price: yup.number().required("Campo obrigatório"),
+  price: yup
+    .number()
+    .positive(
+      "Coloque um valor válido, acima de 0 e separado por ponto. Ex.: R$50.00"
+    )
+    .required("Campo obrigatório"),
   category: yup.string().required("Campo obrigatório"),
 });
 
@@ -88,8 +93,21 @@ export function CreateTransactionModal() {
           <h2>Cadastrar transação</h2>
 
           <input placeholder="Nome" {...register("transactionName")} />
-          <input placeholder="Preço" {...register("price")} />
+
+          {formState?.errors && formState.errors.transactionName?.message && (
+            <span>{formState.errors.transactionName.message}</span>
+          )}
+
+          <input placeholder="Preço" {...register("price")} type="number" />
+
+          {formState?.errors && formState.errors.price?.message && (
+            <span>{formState.errors.price.message}</span>
+          )}
+
           <input placeholder="Categoria" {...register("category")} />
+          {formState?.errors && formState.errors.category?.message && (
+            <span>{formState.errors.category.message}</span>
+          )}
 
           <TransactionTypeContainer>
             <RadioBox
