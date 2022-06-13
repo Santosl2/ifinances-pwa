@@ -12,7 +12,12 @@ import { SEO } from "@/SEO";
 import { api } from "@/services/api";
 import { GuestSSR } from "@/utils/auth/GuestSSR";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginContent, LoginWrapper } from "@styles/Login.styles";
+import {
+  LeftContent,
+  LoginContent,
+  LoginWrapper,
+  RightContent,
+} from "@styles/Login.styles";
 
 const LoginVariants = {
   visible: {
@@ -73,63 +78,71 @@ export default function Register() {
   return (
     <>
       <SEO title="Controle suas finanças de maneira fácil" />
-      <LoginWrapper
-        initial="hidden"
-        animate="visible"
-        variants={LoginVariants}
-        transition={{ duration: 0.7 }}
-      >
-        <h4>💸 Registro</h4>
-        <LoginContent onSubmit={handleSubmit(handleRegister)}>
-          <Input
-            type="text"
-            label="Nome"
-            error={formState.errors.name}
-            {...register("name")}
-            required
-          />
+      <LoginWrapper>
+        <LeftContent />
+        <RightContent
+          initial="hidden"
+          animate="visible"
+          variants={LoginVariants}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="title">
+            <h4>💸 iFinances</h4>
+            <span>
+              Controle suas finanças de maneira <br /> simples e rápida
+            </span>
+          </div>
+          <LoginContent onSubmit={handleSubmit(handleRegister)}>
+            <Input
+              type="text"
+              label="Nome"
+              error={formState.errors.name}
+              {...register("name")}
+              required
+            />
 
-          <Input
-            type="email"
-            label="E-mail"
-            error={formState.errors.email}
-            {...register("email")}
-            required
-          />
+            <Input
+              type="email"
+              label="E-mail"
+              error={formState.errors.email}
+              {...register("email")}
+              required
+            />
 
-          <Input
-            type="password"
-            label="Senha"
-            error={formState.errors.password}
-            {...register("password")}
-            required
-          />
+            <Input
+              type="password"
+              label="Senha"
+              error={formState.errors.password}
+              {...register("password")}
+              required
+            />
 
-          <Input
-            type="password"
-            label="Repetir senha"
-            error={formState.errors.password_confirmation}
-            {...register("password_confirmation")}
-            required
-          />
+            <Input
+              type="password"
+              label="Repetir senha"
+              error={formState.errors.password_confirmation}
+              {...register("password_confirmation")}
+              required
+            />
 
-          <Button
-            type="submit"
-            isLoading={formState.isSubmitting}
-            disabled={formState.isSubmitting}
-            bgColor="#363F5F"
-          >
-            Registrar
-          </Button>
+            <Button
+              type="submit"
+              isLoading={formState.isSubmitting}
+              disabled={formState.isSubmitting}
+              bgColor="#363F5F"
+            >
+              Registrar
+            </Button>
 
-          <Button
-            type="button"
-            bgColor="#E52E4D"
-            onClick={() => router.push("/")}
-          >
-            Voltar
-          </Button>
-        </LoginContent>
+            <Button
+              type="button"
+              bgColor="#E52E4D"
+              onClick={() => router.push("/")}
+            >
+              Voltar
+            </Button>
+          </LoginContent>
+        </RightContent>
       </LoginWrapper>
     </>
   );

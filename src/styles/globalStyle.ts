@@ -51,17 +51,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-     
-
         -webkit-font-smoothing: antialiased;
-        background:  ${
-          process.browser && !personalizedBg.includes(window?.location.pathname)
-            ? "var(--background)"
-            : "linear-gradient(180deg, #363F5F 59.37%, rgba(36, 44, 74, 0.93) 73.44%);"
-        }
-         
-   
-        
+        background:  var(--background);
     }
 
     body, input, textarea, button {

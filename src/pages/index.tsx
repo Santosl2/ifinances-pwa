@@ -13,7 +13,12 @@ import { SEO } from "@/SEO";
 import { changeUser } from "@/store/users/UserReducers";
 import { GuestSSR } from "@/utils/auth/GuestSSR";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { LoginContent, LoginWrapper } from "@styles/Login.styles";
+import {
+  LeftContent,
+  LoginContent,
+  LoginWrapper,
+  RightContent,
+} from "@styles/Login.styles";
 
 const LoginVariants = {
   visible: {
@@ -78,33 +83,41 @@ export default function Login() {
   return (
     <>
       <SEO title="Controle suas finanças de maneira fácil" />
-      <LoginWrapper
-        initial="hidden"
-        animate="visible"
-        variants={LoginVariants}
-        transition={{ duration: 0.7 }}
-      >
-        <h4>💸 iFinances</h4>
-        <LoginContent onSubmit={handleSubmit(handleLogin)}>
-          <Input type="email" label="E-mail" {...register("email")} />
-          <Input type="password" label="Senha" {...register("password")} />
-          <Button
-            type="submit"
-            isLoading={formState.isSubmitting}
-            disabled={formState.isSubmitting}
-            bgColor="#363F5F"
-          >
-            Entrar
-          </Button>
+      <LoginWrapper>
+        <LeftContent />
+        <RightContent
+          initial="hidden"
+          animate="visible"
+          variants={LoginVariants}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="title">
+            <h4>💸 iFinances</h4>
+            <span>
+              Controle suas finanças de maneira <br /> simples e rápida
+            </span>
+          </div>
+          <LoginContent onSubmit={handleSubmit(handleLogin)}>
+            <Input type="email" label="E-mail" {...register("email")} />
+            <Input type="password" label="Senha" {...register("password")} />
+            <Button
+              type="submit"
+              isLoading={formState.isSubmitting}
+              disabled={formState.isSubmitting}
+              bgColor="#363F5F"
+            >
+              Entrar
+            </Button>
 
-          <Button
-            type="button"
-            bgColor="#e52e4d"
-            onClick={() => router.push("/register")}
-          >
-            Registre-se
-          </Button>
-        </LoginContent>
+            <Button
+              type="button"
+              bgColor="#e52e4d"
+              onClick={() => router.push("/register")}
+            >
+              Registre-se
+            </Button>
+          </LoginContent>
+        </RightContent>
       </LoginWrapper>
     </>
   );
