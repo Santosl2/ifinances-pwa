@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-const personalizedBg = ["/register", "/"];
 const GlobalStyle = createGlobalStyle`
    
 
@@ -17,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
         --loading-color:#2c146b;
         --loading-border-color: white;
+
 
         --blue-600: #22293F;
         --blue-500: #363F5F;

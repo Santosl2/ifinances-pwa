@@ -87,7 +87,7 @@ export default function Register() {
           transition={{ duration: 0.7 }}
         >
           <div className="title">
-            <h4>💸 iFinances</h4>
+            <h4>💸 Registro</h4>
             <span>
               Controle suas finanças de maneira <br /> simples e rápida
             </span>

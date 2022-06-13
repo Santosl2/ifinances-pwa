@@ -1,14 +1,8 @@
+import { transparentize } from "polished";
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
-  background-image: linear-gradient(
-    to right top,
-    #e7b3b5,
-    #d0a394,
-    #b3967a,
-    #928967,
-    #707c5b
-  );
+  background: linear-gradient(180deg, #363f5f 0%, #202538 100%);
 `;
 
 export const HeaderContent = styled.div`
@@ -20,16 +14,22 @@ export const HeaderContent = styled.div`
   justify-content: space-between;
 
   img {
-    width: 120px;
+    width: 220px;
   }
 
   button {
-    padding: 0 2rem;
+    padding: 0 1.7rem;
     height: 2.5rem;
-    background: rgba(55, 55, 55, 0.25);
+    background: var(--blue-600);
 
     &:hover {
-      background: rgba(55, 55, 55, 0.35);
+      background: ${transparentize(0.3, "#22293f")};
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    img {
+      width: 170px;
     }
   }
 `;

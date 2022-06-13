@@ -2,10 +2,10 @@
 
 exports[`Header Test should be match snapshot 1`] = `
 <header
-  class="sc-jSMfEi eOWLDg"
+  class="sc-jSMfEi eauWbA"
 >
   <div
-    class="sc-gKXOVf xNUQv"
+    class="sc-gKXOVf gAOQsw"
   >
     <img
       alt="iFinances Logo"
