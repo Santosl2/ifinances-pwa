@@ -6,6 +6,7 @@ exports[`Header Test should be match snapshot 1`] = `
 >
   <div
     class="sc-gKXOVf gAOQsw"
+    style="opacity: 0; transform: translateX(-100vw) translateZ(0);"
   >
     <img
       alt="iFinances Logo"
