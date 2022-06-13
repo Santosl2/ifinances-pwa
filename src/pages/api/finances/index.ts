@@ -3,6 +3,7 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import { addDoc, getDocs, orderBy, query, where } from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
+import { v4 as uuid } from "uuid";
 
 import { FinanceTypes } from "@/interfaces/Finance";
 import { CreateTransactionModalFormData } from "@/interfaces/Forms";
@@ -15,17 +16,49 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(403);
   }
 
+  if (req.method === "DELETE") {
+    const regId = req.body.id;
+
+    const q = query(
+      dbInstanceFinances,
+      where("userId", "==", id),
+      where("id", "==", regId)
+    );
+
+    const queryResult = await getDocs(q);
+
+    if (queryResult.size === 0) {
+      return res.json({
+        success: false,
+        message: "Sem registros encontrados.",
+      });
+    }
+
+    try {
+      // console.log(queryResult.docs[0].ref);
+      return res.json({
+        success: true,
+      });
+    } catch {
+      return res.json({
+        success: false,
+        message: "Ocorreu um erro ao cadastrar transação.",
+      });
+    }
+  }
+
   if (req.method === "POST") {
     const { transactionName, price, category, type } = req.body
       ?.data as CreateTransactionModalFormData;
 
     try {
       const data = await addDoc(dbInstanceFinances, {
+        id: uuid(),
+        title: transactionName,
+        userId: id,
+        type,
         amount: price,
         category,
-        title: transactionName,
-        type,
-        userId: id,
         createdAt: new Date().getTime(),
       });
 
@@ -38,7 +71,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         message: "Ocorreu um erro ao cadastrar transação.",
       });
     }
-    return;
   }
 
   if (req.method === "GET") {

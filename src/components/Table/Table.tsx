@@ -4,18 +4,32 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-sparse-arrays */
 /* eslint-disable react/no-array-index-key */
-import { FaSortDown, FaSortUp } from "react-icons/fa";
+import { FaSort, FaSortDown, FaSortUp } from "react-icons/fa";
 import { useSortBy, useTable } from "react-table";
 
 import { Container, TableBody, TableHead, TableWrapper } from "./Table.styles";
 import { TableProps } from "./Table.types";
+
+const dashboardVariants = {
+  visible: {
+    opacity: 1,
+  },
+  hidden: {
+    opacity: 0,
+  },
+};
 
 export function Table({ columns, data }: TableProps): JSX.Element {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
 
   return (
-    <Container>
+    <Container
+      initial="hidden"
+      animate="visible"
+      variants={dashboardVariants}
+      transition={{ duration: 0.7 }}
+    >
       <TableWrapper {...getTableProps()}>
         <TableHead>
           {headerGroups.map((headerGroup) => (
@@ -24,14 +38,14 @@ export function Table({ columns, data }: TableProps): JSX.Element {
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <FaSortDown size={20} />
+                    {column.isSorted &&
+                      (column.isSortedDesc ? (
+                        <FaSortDown size={16} />
                       ) : (
-                        <FaSortUp size={20} />
-                      )
-                    ) : (
-                      ""
+                        <FaSortUp size={16} />
+                      ))}
+                    {!column.disableSortBy && !column.isSorted && (
+                      <FaSort size={16} />
                     )}
                   </span>
                 </th>

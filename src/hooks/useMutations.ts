@@ -5,7 +5,11 @@ import {
   SignInFormData,
 } from "@/interfaces/Forms";
 import { queryClient } from "@/services/queryClient";
-import { createUserFinances, loginUser } from "@/services/users";
+import {
+  createDeleteFinance,
+  createUserFinances,
+  loginUser,
+} from "@/services/users";
 
 export function useMutationCreateFinance() {
   return useMutation(
@@ -16,6 +20,14 @@ export function useMutationCreateFinance() {
       },
     }
   );
+}
+
+export function useMutationDeleteFinance() {
+  return useMutation(async (id: string) => createDeleteFinance(id), {
+    onSuccess: () => {
+      queryClient?.invalidateQueries("finances");
+    },
+  });
 }
 
 export function useMutationLoginUser() {
