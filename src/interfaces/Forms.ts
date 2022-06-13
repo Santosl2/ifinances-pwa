@@ -13,6 +13,7 @@ export type SignInFormData = {
 export type TransactionTypes = "income" | "outcome";
 
 export type CreateTransactionModalFormData = {
+  id?: string;
   transactionName: string;
   price: number;
   category: string;

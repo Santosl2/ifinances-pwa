@@ -38,13 +38,13 @@ export function Table({ columns, data }: TableProps): JSX.Element {
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
+                    {column.isSorted &&
+                      (column.isSortedDesc ? (
                         <FaSortDown size={16} />
                       ) : (
                         <FaSortUp size={16} />
-                      )
-                    ) : (
+                      ))}
+                    {!column.disableSortBy && !column.isSorted && (
                       <FaSort size={16} />
                     )}
                   </span>

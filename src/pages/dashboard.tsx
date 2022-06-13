@@ -1,8 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useMemo } from "react";
 
+import { Trash } from "phosphor-react";
+
 import { Header, LoadingIndicator, Summary, Table } from "@/components";
 import { CellProps } from "@/components/Table/Table.types";
+import { useMutationDeleteFinance } from "@/hooks/useMutations";
 import { useUsersFinances } from "@/hooks/useUsersFinances";
 import { SEO } from "@/SEO";
 import { AuthSSR } from "@/utils/auth/AuthSSR";
@@ -11,6 +14,15 @@ import { DashboardWrapper } from "@styles/Dashboard.styles";
 
 export default function Home() {
   const { isLoading, data: registers } = useUsersFinances();
+  const deleteRegisterMutate = useMutationDeleteFinance();
+
+  const deleteRegister = async (id: string | undefined) => {
+    if (!id || id === "") return;
+
+    const response = await deleteRegisterMutate.mutateAsync(id);
+
+    console.log(response);
+  };
 
   const formattedData = useMemo(() => {
     return (
@@ -21,7 +33,8 @@ export default function Home() {
           amount: moneyFormat(res.amount, res.type),
           category: res.category,
           type: res.type,
-          date: dateFormat(res.date),
+          date: dateFormat(res.createdAt),
+          actions: res.id ?? "",
         };
       })
     );
@@ -49,6 +62,20 @@ export default function Home() {
       {
         Header: "Data",
         accessor: "date",
+      },
+      {
+        Header: "#",
+        accessor: "actions",
+        disableSortBy: true,
+        Cell: ({ cell: { value } }: CellProps) => (
+          <Trash
+            size={24}
+            color="#e52e4d"
+            cursor="pointer"
+            data-testid="deleteTest"
+            onClick={() => deleteRegister(value)}
+          />
+        ),
       },
     ],
     []

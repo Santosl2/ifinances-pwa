@@ -33,3 +33,13 @@ export async function createUserFinances(
 
   return response.data;
 }
+
+export async function createDeleteFinance(
+  id: string
+): Promise<DefaultResponse> {
+  const response = await api.delete("/finances", {
+    data: { id },
+  });
+
+  return response.data;
+}
