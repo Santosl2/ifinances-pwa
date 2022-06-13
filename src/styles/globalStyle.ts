@@ -122,6 +122,23 @@ const GlobalStyle = createGlobalStyle`
     padding: 2.5rem;
     }
 
+    footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       margin-top: 1rem;
+
+        div {
+            font-size: 0.8rem;
+            color: var(--text-title);
+            a{
+                color: var(--green);
+                
+            }
+        }
+    }
+
     @keyframes modalAnimation {
         from {
             opacity: 0;

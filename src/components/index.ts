@@ -5,3 +5,4 @@ export * from "./Form";
 export * from "./Skeleton";
 export * from "./Modal";
 export * from "./NoResults";
+export * from "./Footer";
