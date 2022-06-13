@@ -44,6 +44,8 @@ exports[`Summary test should br match snapshot 1`] = `
   gap: 1.5rem;
   margin-top: -9rem;
   margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .c0 div:last-child {

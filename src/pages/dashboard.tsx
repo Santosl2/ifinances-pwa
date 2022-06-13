@@ -30,15 +30,17 @@ export default function Home() {
   const deleteRegister = async (id: string | undefined) => {
     if (!id || id === "") return;
 
-    toast.promise(deleteRegisterMutate.mutateAsync(id), {
-      pending: "Transação está sendo deletada.",
-      success: {
-        render() {
-          return "Transação deletada com sucesso!";
-        },
-        icon: "🟢",
-      },
-      error: "Transação falha ao remover transação!",
+    const response = await deleteRegisterMutate.mutateAsync(id);
+
+    toast(response.message ?? "Transação deleta com sucesso!", {
+      type: `${response.success ? "success" : "error"}`,
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
   };
 
