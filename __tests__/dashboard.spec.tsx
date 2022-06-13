@@ -4,6 +4,7 @@ import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient"
 import { fireEvent, screen } from "@testing-library/react";
 
 import DashboardPage from "../src/pages/dashboard";
+import * as toast from "react-toastify";
 
 const fakeData = {
   isLoading: true,
@@ -81,24 +82,6 @@ describe("Dashboard Page", () => {
 
     expect(screen.getByText(fakeData.data[1].title)).toBeInTheDocument();
     expect(screen.getByText(fakeData.data[1].category)).toBeInTheDocument();
-  });
-
-  it("should be able to render loading", async () => {
-    useUsersFinances.mockImplementation(() => ({
-      isLoading: false,
-      data: fakeData,
-    }));
-
-    useMutationDeleteFinance.mockImplementation(() => ({
-      isLoading: true,
-    }));
-
-    renderWithStoreAndClient(<DashboardPage />);
-
-    expect(screen.getAllByTestId("loadingTestTable")).toBeTruthy();
-    expect(screen.getAllByTestId("loadingTestTable")).toHaveLength(
-      fakeData.data.length
-    );
   });
 
   it("should be able to delete finance", async () => {

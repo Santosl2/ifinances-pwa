@@ -14,7 +14,7 @@ exports[`Input Test should match Snapshot 1`] = `
 
 .c0 span {
   font-size: 0.8rem;
-  color: var(--red);
+  color: var(--red-200);
 }
 
 .c0 label {
