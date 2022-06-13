@@ -9,19 +9,19 @@ export const InputWrapper = styled.div<Pick<InputProps, "error">>`
 
   span {
     font-size: 0.8rem;
-    color: var(--red);
+    color: var(--red-200);
   }
 
   ${(props) =>
     !!props.error &&
     `
     label {
-       color:  var(--red);
+       color:  var(--red-200);
     }
   input {
-    border-bottom-color: var(--red);
+    border-bottom-color: var(--red-200);
     &:focus {
-    border-bottom-color: var(--red);
+    border-bottom-color: var(--red-200);
 
     }
   }
