@@ -17,7 +17,7 @@ const customJestConfig = {
     "^@/utils/(.*)$": "<rootDir>/src/utils/$1",
     "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
     "^@/hooks/(.*)$": "<rootDir>/src/hooks/$1",
-    "^@/tests/(.*)$": "<rootDir>/src/tests/$1",
+    "^@/testsUtils/(.*)$": "<rootDir>/src/testsUtils/$1",
     "^@/store/(.*)/(.*)$": "<rootDir>/src/store/$1/$2",
     "^@/store/(.*)$": "<rootDir>/src/store/$1",
     "^@/store$": "<rootDir>/src/store/index.ts",
