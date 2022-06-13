@@ -1,8 +1,3 @@
-/* eslint-disable testing-library/no-node-access */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable unused-imports/no-unused-imports */
-import * as React from "react";
-
 import { render, screen } from "@testing-library/react";
 import "jest-styled-components";
 

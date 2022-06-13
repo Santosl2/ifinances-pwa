@@ -155,6 +155,7 @@ describe("Register Page", () => {
       },
     });
     expect(screen.getByText("Seja bem-vindo(a)")).toBeInTheDocument();
+    expect(push).toHaveBeenCalledWith("/");
   });
 
   it("should be not able to Register user when e-mail already exists", async () => {

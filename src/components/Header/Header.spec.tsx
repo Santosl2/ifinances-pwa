@@ -1,7 +1,3 @@
-/* eslint-disable no-promise-executor-return */
-/* eslint-disable testing-library/no-node-access */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
 import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";
@@ -9,18 +5,16 @@ import { screen } from "@testing-library/react";
 
 import { Header } from "./Header";
 
-// const mockDispatch = jest.fn();
+const mockDispatch = jest.fn();
 
-// jest.mock("react-redux", () => ({
-//   useDispatch: () => mockDispatch,
-// }));
-
-// const useDispatchMock = reactRedux.useDispatch;
+jest.mock("react-redux", () => ({
+  useDispatch: () => mockDispatch,
+}));
 
 describe("Header Test", () => {
-  // beforeEach(() => {
-  //   // useDispatchMock.mockImplementation(() => () => {});
-  // });
+  beforeEach(() => {
+    // useDispatchMock.mockImplementation(() => () => {});
+  });
 
   // afterEach(() => {
   //   useDispatchMock.mockClear();

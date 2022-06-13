@@ -1,8 +1,3 @@
-/* eslint-disable testing-library/no-wait-for-side-effects */
-/* eslint-disable testing-library/no-unnecessary-act */
-/* eslint-disable testing-library/no-debugging-utils */
-/* eslint-disable import/no-extraneous-dependencies */
-
 import mockAxios from "jest-mock-axios";
 
 import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";

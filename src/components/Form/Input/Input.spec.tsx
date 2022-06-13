@@ -1,15 +1,4 @@
-/* eslint-disable testing-library/no-node-access */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable unused-imports/no-unused-imports */
-import * as React from "react";
-
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "jest-styled-components";
 
 import { Input } from "./Input";
@@ -35,6 +24,7 @@ describe("Input Test", () => {
     input.focus();
 
     expect(input).toHaveFocus();
+    expect(input.style).toHaveProperty("border");
   });
 
   it("should match Snapshot", () => {

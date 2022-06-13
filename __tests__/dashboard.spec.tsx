@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/no-var-requires */
 import mockAxios from "jest-mock-axios";
 
 import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";

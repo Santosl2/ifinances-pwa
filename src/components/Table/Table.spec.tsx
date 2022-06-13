@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
 import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";

@@ -65,6 +65,7 @@ export default function Register() {
       progress: undefined,
     });
 
+    router.push("/");
     reset();
   };
 
