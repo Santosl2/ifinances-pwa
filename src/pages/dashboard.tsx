@@ -4,7 +4,13 @@ import { toast } from "react-toastify";
 
 import { Trash } from "phosphor-react";
 
-import { Header, LoadingIndicator, Summary, Table } from "@/components";
+import {
+  Header,
+  LoadingIndicator,
+  Summary,
+  Table,
+  NoResults,
+} from "@/components";
 import { CellProps } from "@/components/Table/Table.types";
 import { useMutationDeleteFinance } from "@/hooks/useMutations";
 import { useUsersFinances } from "@/hooks/useUsersFinances";
@@ -118,6 +124,7 @@ export default function Home() {
         {!isLoading && formattedData && (
           <Table data={values} columns={columns} />
         )}
+        {!formattedData && !isLoading && <NoResults />}
       </DashboardWrapper>
     </>
   );

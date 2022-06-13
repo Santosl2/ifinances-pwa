@@ -85,6 +85,8 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         align-items: center;
         justify-content:center;
+          z-index: 2;
+
     }
 
     .react-modal-content {
@@ -95,6 +97,7 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
         border-radius: 0.25rem;
         margin: 0 1rem ;
+          z-index: 2;
 
         animation: modalAnimation 0.3s;
     }

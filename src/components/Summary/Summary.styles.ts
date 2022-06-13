@@ -6,6 +6,8 @@ export const SummaryWrapper = styled.div`
   gap: 1.5rem;
   margin-top: -9rem;
   margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
 
   div:last-child {
     background-color: var(--green);
