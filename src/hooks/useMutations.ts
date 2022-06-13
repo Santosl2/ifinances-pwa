@@ -3,10 +3,12 @@ import { useMutation } from "react-query";
 import {
   CreateTransactionModalFormData,
   SignInFormData,
+  SignUpFormData,
 } from "@/interfaces/Forms";
 import { queryClient } from "@/services/queryClient";
 import {
   createDeleteFinance,
+  createUser,
   createUserFinances,
   loginUser,
 } from "@/services/users";
@@ -32,4 +34,8 @@ export function useMutationDeleteFinance() {
 
 export function useMutationLoginUser() {
   return useMutation(async (user: SignInFormData) => loginUser(user));
+}
+
+export function useMutationRegisterUser() {
+  return useMutation(async (user: SignUpFormData) => createUser(user));
 }

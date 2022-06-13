@@ -1,6 +1,7 @@
 import {
   CreateTransactionModalFormData,
   SignInFormData,
+  SignUpFormData,
 } from "@/interfaces/Forms";
 import {
   DefaultResponse,
@@ -12,6 +13,14 @@ import { api } from "../api";
 
 export async function loginUser(user: SignInFormData): Promise<LoginResponse> {
   const response = await api.post("/users/login", {
+    user,
+  });
+
+  return response.data;
+}
+
+export async function createUser(user: SignUpFormData) {
+  const response = await api.post("/users/create", {
     user,
   });
 

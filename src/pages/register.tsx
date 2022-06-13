@@ -1,15 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useMutation } from "react-query";
 import { toast } from "react-toastify";
 
 import { useRouter } from "next/router";
 import * as yup from "yup";
 
 import { Button, Input } from "@/components/Form";
+import { useMutationRegisterUser } from "@/hooks/useMutations";
 import { SignUpFormData } from "@/interfaces/Forms";
 import { SEO } from "@/SEO";
-import { api } from "@/services/api";
 import { GuestSSR } from "@/utils/auth/GuestSSR";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -46,13 +45,7 @@ const registerSchema = yup.object().shape({
 export default function Register() {
   const router = useRouter();
 
-  const createUser = useMutation(async (user: SignUpFormData) => {
-    const response = await api.post("/users/create", {
-      user,
-    });
-
-    return response.data;
-  });
+  const createUser = useMutationRegisterUser();
 
   const { register, handleSubmit, formState, reset } = useForm<SignUpFormData>({
     resolver: yupResolver(registerSchema),
