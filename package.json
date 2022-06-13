@@ -1,5 +1,5 @@
 {
-  "name": "base",
+  "name": "ifinances",
   "private": true,
   "scripts": {
     "dev": "next dev",

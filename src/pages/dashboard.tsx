@@ -103,7 +103,7 @@ export default function Home() {
 
   return (
     <>
-      <SEO title="Teste" />
+      <SEO title="Dashboard" />
       <Header />
       <DashboardWrapper>
         <Summary data={registers} isLoading={isLoading} />
