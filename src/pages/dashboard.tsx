@@ -78,8 +78,8 @@ export default function Home() {
         accessor: "actions",
         disableSortBy: true,
         Cell: ({ cell: { value } }: CellProps) =>
-          deleteRegisterMutate.isLoading || deleteRegisterMutate.isLoading ? (
-            <LoadingIndicator color="#e52e4d" />
+          deleteRegisterMutate.isLoading ? (
+            <LoadingIndicator data-testid="loadingTestTable" color="#e52e4d" />
           ) : (
             <Trash
               size={24}
