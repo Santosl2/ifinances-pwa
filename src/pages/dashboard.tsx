@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useMemo } from "react";
+import { CSVLink } from "react-csv";
 import { toast } from "react-toastify";
 
 import { Trash } from "phosphor-react";
@@ -11,8 +12,10 @@ import {
   Table,
   NoResults,
   Footer,
+  Button,
 } from "@/components";
 import { CellProps } from "@/components/Table/Table.types";
+import { CSV_EXPORT_FILE_NAME } from "@/constants";
 import { useMutationDeleteFinance } from "@/hooks/useMutations";
 import { useUsersFinances } from "@/hooks/useUsersFinances";
 import { SEO } from "@/SEO";
@@ -54,6 +57,21 @@ export default function Home() {
       })
     );
   }, [registers]);
+
+  const csvExport = useMemo(() => {
+    return (
+      formattedData &&
+      formattedData.map((res) => {
+        return {
+          Titulo: res.title,
+          Valor: res.amount,
+          Categoria: res.category,
+          Tipo: res.type === "outcome" ? "Saída" : "Entrada",
+          Data: res.date,
+        };
+      })
+    );
+  }, [formattedData]);
 
   const columns = useMemo(
     () => [
@@ -103,6 +121,11 @@ export default function Home() {
     [formattedData]
   );
 
+  const csvExportValues = useMemo(
+    () => [...Object.values(csvExport || [])],
+    [csvExport]
+  );
+
   return (
     <>
       <SEO title="Dashboard" />
@@ -118,7 +141,17 @@ export default function Home() {
           />
         )}
         {!isLoading && formattedData && (
-          <Table data={values} columns={columns} />
+          <>
+            <Table data={values} columns={columns} />
+            <CSVLink
+              data={csvExportValues}
+              filename={`${CSV_EXPORT_FILE_NAME}-${dateFormat(
+                new Date().getTime()
+              )}`}
+            >
+              <Button>Exportar </Button>
+            </CSVLink>
+          </>
         )}
         {!formattedData && !isLoading && <NoResults />}
         <Footer />

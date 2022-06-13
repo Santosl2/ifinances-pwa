@@ -35,6 +35,12 @@ export const ModalForm = styled.form`
     width: 100%;
     height: 3rem;
   }
+
+  > span {
+    color: var(--red-200);
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
 `;
 
 const colors = {
