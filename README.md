@@ -1,8 +1,3 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
-[![Next.JS](https://img.shields.io/badge/NextJS-blue)](https://nextjs.org/)
-[![React.js](https://img.shields.io/badge/-ReactJS-blue)](https://pt-br.reactjs.org/)
-[![Typescript](https://img.shields.io/badge/-Typescript-blue)](https://www.typescriptlang.org/)
-
 # 💸 iFinances
 
 Take control of your finances simple and fast 🚀
@@ -16,6 +11,7 @@ The design of this project was made by Tiago Luchtenberg and adapted for this pr
 - [Figma Layout](https://www.figma.com/file/fo9AynSWDylQSXHVPY39Rp/dtmoney-re-design?node-id=35212%3A1490)
 - [Installation](#installation)
 - [Technologies used in this project](#technologies-used-in-this-project)
+- [Collaborators](#collaborators)
 
 <br/>
 
@@ -53,7 +49,7 @@ npm run storybook
 
 </br>
 
-## Technologies used in this project
+ ## Technologies used in this project
 
 - [Axios](https://axios-http.com/ptbr/docs/intro)
 
@@ -95,4 +91,24 @@ npm run storybook
 
 <br/>
 
+## Collaborators
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/67132916?v=4" width="140px;" alt="Picture of Matheus Filype in GitHub"/><br>
+        <sub>
+          <b>Matheus Filype</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+## 📝 License
+
+This project is under license. See the file [LICENSE](LICENSE.md) for more details.
+
 Thanks!
+
