@@ -51,7 +51,7 @@ export function Order({
 
   useEffect(() => {
     animateNumber(100);
-  }, [isLoading]);
+  }, [isLoading, amount]);
 
   return (
     <OrderWrapper

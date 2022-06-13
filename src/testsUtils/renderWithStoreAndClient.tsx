@@ -25,8 +25,6 @@ export const testStore = (state: Partial<RootState>) => {
   });
 };
 
-// todo change to renderCustom
-
 export const renderWithStoreAndClient = (
   component: any,
   initialState: any = {}

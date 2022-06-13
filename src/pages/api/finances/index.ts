@@ -1,13 +1,21 @@
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 /* eslint-disable unused-imports/no-unused-vars */
-import { addDoc, getDocs, orderBy, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  deleteDoc,
+  doc as delDoc,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 import { v4 as uuid } from "uuid";
 
 import { FinanceTypes } from "@/interfaces/Finance";
 import { CreateTransactionModalFormData } from "@/interfaces/Forms";
-import { dbInstanceFinances } from "@/services/firebase";
+import { database, dbInstanceFinances } from "@/services/firebase";
 import { getUserCookie } from "@/utils/Cookie";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -35,7 +43,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-      // console.log(queryResult.docs[0].ref);
+      await deleteDoc(
+        delDoc(database, "users_finances", queryResult.docs[0].id)
+      );
       return res.json({
         success: true,
       });

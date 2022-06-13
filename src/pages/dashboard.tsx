@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useMemo } from "react";
+import { toast } from "react-toastify";
 
 import { Trash } from "phosphor-react";
 
@@ -21,7 +22,16 @@ export default function Home() {
 
     const response = await deleteRegisterMutate.mutateAsync(id);
 
-    console.log(response);
+    toast(response.message ?? "Transação deletada com sucesso!", {
+      type: `${response.success ? "success" : "error"}`,
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const formattedData = useMemo(() => {
@@ -67,18 +77,23 @@ export default function Home() {
         Header: "#",
         accessor: "actions",
         disableSortBy: true,
-        Cell: ({ cell: { value } }: CellProps) => (
-          <Trash
-            size={24}
-            color="#e52e4d"
-            cursor="pointer"
-            data-testid="deleteTest"
-            onClick={() => deleteRegister(value)}
-          />
-        ),
+        Cell: ({ cell: { value } }: CellProps) =>
+          deleteRegisterMutate.isLoading ? (
+            <LoadingIndicator data-testid="loadingTestTable" color="#e52e4d" />
+          ) : (
+            <Trash
+              size={24}
+              color="#e52e4d"
+              cursor={!deleteRegisterMutate.isLoading ? "pointer" : "normal"}
+              data-testid="deleteTest"
+              onClick={() => {
+                if (!deleteRegisterMutate.isLoading) deleteRegister(value);
+              }}
+            />
+          ),
       },
     ],
-    []
+    [deleteRegisterMutate.isLoading]
   );
 
   const values = useMemo(

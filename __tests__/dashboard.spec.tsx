@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import mockAxios from "jest-mock-axios";
 
 import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 
 import DashboardPage from "../src/pages/dashboard";
 
@@ -11,6 +10,7 @@ const fakeData = {
   success: true,
   data: [
     {
+      id: "123",
       amount: 5000,
       category: "CategorySell",
       createdAt: 1655057800135,
@@ -19,6 +19,7 @@ const fakeData = {
       userId: "test",
     },
     {
+      id: "1234",
       amount: 5000,
       category: "CategoryBuy",
       createdAt: 1655057800135,
@@ -34,11 +35,16 @@ const useUsersFinances = jest.spyOn(
   require("../src/hooks/useUsersFinances"),
   "useUsersFinances"
 );
+const useMutationDeleteFinance = jest.spyOn(
+  require("../src/hooks/useMutations"),
+  "useMutationDeleteFinance"
+);
 
 describe("Dashboard Page", () => {
   afterEach(() => {
     mockAxios.reset();
     useUsersFinances.mockClear();
+    useMutationDeleteFinance.mockClear();
   });
 
   it("should render Dashboard Page", () => {
@@ -75,5 +81,46 @@ describe("Dashboard Page", () => {
 
     expect(screen.getByText(fakeData.data[1].title)).toBeInTheDocument();
     expect(screen.getByText(fakeData.data[1].category)).toBeInTheDocument();
+  });
+
+  it("should be able to render loading", async () => {
+    useUsersFinances.mockImplementation(() => ({
+      isLoading: false,
+      data: fakeData,
+    }));
+
+    useMutationDeleteFinance.mockImplementation(() => ({
+      isLoading: true,
+    }));
+
+    renderWithStoreAndClient(<DashboardPage />);
+
+    expect(screen.getAllByTestId("loadingTestTable")).toBeTruthy();
+    expect(screen.getAllByTestId("loadingTestTable")).toHaveLength(
+      fakeData.data.length
+    );
+  });
+
+  it("should be able to delete finance", async () => {
+    useUsersFinances.mockImplementation(() => ({
+      isLoading: false,
+      data: fakeData,
+    }));
+
+    const mutateMock = jest.fn(() => ({
+      success: true,
+    }));
+
+    useMutationDeleteFinance.mockImplementation(() => ({
+      isLoading: false,
+      mutateAsync: mutateMock,
+    }));
+
+    renderWithStoreAndClient(<DashboardPage />);
+
+    const deleteBtn = screen.getAllByTestId("deleteTest");
+    fireEvent.click(deleteBtn[0]);
+
+    expect(mutateMock).toHaveBeenCalledWith(fakeData.data[0].id);
   });
 });
