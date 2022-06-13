@@ -27,17 +27,15 @@ export default function Home() {
   const deleteRegister = async (id: string | undefined) => {
     if (!id || id === "") return;
 
-    const response = await deleteRegisterMutate.mutateAsync(id);
-
-    toast(response.message ?? "Transação deletada com sucesso!", {
-      type: `${response.success ? "success" : "error"}`,
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+    toast.promise(deleteRegisterMutate.mutateAsync(id), {
+      pending: "Transação está sendo deletada.",
+      success: {
+        render() {
+          return "Transação deletada com sucesso!";
+        },
+        icon: "🟢",
+      },
+      error: "Transação falha ao remover transação!",
     });
   };
 
@@ -84,20 +82,17 @@ export default function Home() {
         Header: "#",
         accessor: "actions",
         disableSortBy: true,
-        Cell: ({ cell: { value } }: CellProps) =>
-          deleteRegisterMutate.isLoading ? (
-            <LoadingIndicator data-testid="loadingTestTable" color="#e52e4d" />
-          ) : (
-            <Trash
-              size={24}
-              color="#e52e4d"
-              cursor={!deleteRegisterMutate.isLoading ? "pointer" : "normal"}
-              data-testid="deleteTest"
-              onClick={() => {
-                if (!deleteRegisterMutate.isLoading) deleteRegister(value);
-              }}
-            />
-          ),
+        Cell: ({ cell: { value } }: CellProps) => (
+          <Trash
+            size={24}
+            color="#e52e4d"
+            cursor={!deleteRegisterMutate.isLoading ? "pointer" : "normal"}
+            data-testid="deleteTest"
+            onClick={() => {
+              if (!deleteRegisterMutate.isLoading) deleteRegister(value);
+            }}
+          />
+        ),
       },
     ],
     [deleteRegisterMutate.isLoading]

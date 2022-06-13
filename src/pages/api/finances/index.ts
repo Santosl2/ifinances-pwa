@@ -50,7 +50,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         success: true,
       });
     } catch {
-      return res.json({
+      return res.status(500).json({
         success: false,
         message: "Ocorreu um erro ao cadastrar transação.",
       });
@@ -76,7 +76,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         success: true,
       });
     } catch (error) {
-      return res.json({
+      return res.status(500).json({
         success: false,
         message: "Ocorreu um erro ao cadastrar transação.",
       });
@@ -92,7 +92,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       type !== undefined &&
       !Object.values(FinanceTypes).find((t) => t === type)
     ) {
-      return res.status(400).end("Type not allowed");
+      return res.status(500).end("Type not allowed");
     }
 
     const q = query(
@@ -141,7 +141,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         success: true,
       });
     } catch (error) {
-      return res.json({
+      return res.status(500).json({
         success: false,
         message: "Ocorreu um erro ao cadastrar transação.",
       });

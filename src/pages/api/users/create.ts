@@ -37,9 +37,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         authProvider: "local",
       });
 
-      return res.json({ success: true });
+      return res.status(201).json({ success: true });
     } catch (error) {
-      return res.json({
+      return res.status(500).json({
         success: false,
         message: "Ocorreu um erro ao cadastrar.",
       });
