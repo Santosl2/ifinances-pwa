@@ -4,7 +4,7 @@
 /* eslint-disable testing-library/no-wait-for-side-effects */
 import mockAxios from "jest-mock-axios";
 
-import { renderWithStoreAndClient } from "@/tests/renderWithStoreAndClient";
+import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 
 import IndexPage from "../src/pages";

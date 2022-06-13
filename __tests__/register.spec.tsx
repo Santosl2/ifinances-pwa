@@ -5,7 +5,7 @@
 
 import mockAxios from "jest-mock-axios";
 
-import { renderWithStoreAndClient } from "@/tests/renderWithStoreAndClient";
+import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 
 import RegisterPage from "../src/pages/register";

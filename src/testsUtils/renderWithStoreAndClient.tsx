@@ -10,7 +10,7 @@ import { combinedReducer } from "@/store/reducers";
 import { configureStore } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
 
-const queryClientTest = new QueryClient({
+export const queryClientTest = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
@@ -18,7 +18,7 @@ const queryClientTest = new QueryClient({
   },
 });
 
-const testStore = (state: Partial<RootState>) => {
+export const testStore = (state: Partial<RootState>) => {
   return configureStore({
     reducer: combinedReducer,
     preloadedState: state,

@@ -4,7 +4,7 @@
 /* eslint-disable unused-imports/no-unused-imports */
 import * as React from "react";
 
-import { renderWithStoreAndClient } from "@/tests/renderWithStoreAndClient";
+import { renderWithStoreAndClient } from "@/testsUtils/renderWithStoreAndClient";
 import { screen } from "@testing-library/react";
 
 import { Header } from "./Header";
