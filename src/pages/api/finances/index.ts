@@ -95,6 +95,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).end("Type not allowed");
     }
 
+    const actualDate = new Date();
+    const initalDayOfMonth =
+      actualDate.getTime() - (actualDate.getDate() - 1) * (86400 * 1000);
+
     const q = query(
       dbInstanceFinances,
       where("userId", "==", id),
@@ -118,12 +122,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const data = doc.map((item) => {
         const itemData = item.data();
 
-        if (itemData.type === "income") {
-          totalIncome += itemData.amount;
-        }
+        if (itemData.createdAt >= initalDayOfMonth) {
+          if (itemData.type === "income") {
+            totalIncome += itemData.amount;
+          }
 
-        if (itemData.type === "outcome") {
-          totalOutcome += itemData.amount;
+          if (itemData.type === "outcome") {
+            totalOutcome += itemData.amount;
+          }
         }
 
         return itemData;
